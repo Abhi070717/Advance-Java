@@ -14,6 +14,43 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql> use rays;
 Database changed
 
+mysql> select * FROM employee;
++----+----------+--------+-----------+
+| Id | Name     | Salary | Company   |
++----+----------+--------+-----------+
+|  1 | Shreeram |  45000 | Infosys   |
+|  2 | Ranvijay |  39000 | Zensar    |
+|  3 | Karan    |  60000 | Wipro     |
+|  4 | Sneha    |  48000 | HCL       |
+|  5 | Rahul    |  75000 | Google    |
+|  6 | Neha     |  70000 | Amazon    |
+|  7 | Vikram   |  68000 | Microsoft |
+|  8 | Pooja    |  55000 | Accenture |
+|  9 | Arjun    |  62000 | IBM       |
+| 10 | Ananya   |  58000 | Deloitte  |
+| 11 | Suresh   |  50000 | TCS       |
+| 12 | Meena    |  54000 | Infosys   |
+| 13 | Rohit    |  61000 | Wipro     |
+| 14 | Kavya    |  47000 | HCL       |
+| 15 | Nikhil   |  80000 | Google    |
+| 16 | Priya    |  72000 | Amazon    |
+| 17 | Manoj    |  69000 | Microsoft |
+| 18 | Divya    |  56000 | Accenture |
+| 19 | Sahil    |  63000 | IBM       |
+| 20 | Isha     |  59000 | Deloitte  |
+| 21 | Ajay     |  51000 | TCS       |
+| 22 | Bhavna   |  55000 | Infosys   |
+| 23 | Deepak   |  64000 | Wipro     |
+| 24 | Ritu     |  49000 | HCL       |
+| 25 | Varun    |  82000 | Google    |
+| 26 | Shalini  |  74000 | Amazon    |
+| 27 | Kunal    |  70000 | Microsoft |
+| 28 | Ayesha   |  58000 | Accenture |
+| 29 | Naveen   |  66000 | IBM       |
+| 30 | Tanvi    |  60000 | Deloitte  |
++----+----------+--------+-----------+
+30 rows in set (0.02 sec)
+
 mysql> select * FROM employee where name = 'Shreeram';
 +----+----------+--------+---------+
 | Id | Name     | Salary | Company |
@@ -68,43 +105,6 @@ mysql> select * FROM employee where name like '%s%';
 | 28 | Ayesha   |  58000 | Accenture |
 +----+----------+--------+-----------+
 7 rows in set (0.00 sec)
-
-mysql> select * FROM employee;
-+----+----------+--------+-----------+
-| Id | Name     | Salary | Company   |
-+----+----------+--------+-----------+
-|  1 | Shreeram |  45000 | Infosys   |
-|  2 | Ranvijay |  39000 | Zensar    |
-|  3 | Karan    |  60000 | Wipro     |
-|  4 | Sneha    |  48000 | HCL       |
-|  5 | Rahul    |  75000 | Google    |
-|  6 | Neha     |  70000 | Amazon    |
-|  7 | Vikram   |  68000 | Microsoft |
-|  8 | Pooja    |  55000 | Accenture |
-|  9 | Arjun    |  62000 | IBM       |
-| 10 | Ananya   |  58000 | Deloitte  |
-| 11 | Suresh   |  50000 | TCS       |
-| 12 | Meena    |  54000 | Infosys   |
-| 13 | Rohit    |  61000 | Wipro     |
-| 14 | Kavya    |  47000 | HCL       |
-| 15 | Nikhil   |  80000 | Google    |
-| 16 | Priya    |  72000 | Amazon    |
-| 17 | Manoj    |  69000 | Microsoft |
-| 18 | Divya    |  56000 | Accenture |
-| 19 | Sahil    |  63000 | IBM       |
-| 20 | Isha     |  59000 | Deloitte  |
-| 21 | Ajay     |  51000 | TCS       |
-| 22 | Bhavna   |  55000 | Infosys   |
-| 23 | Deepak   |  64000 | Wipro     |
-| 24 | Ritu     |  49000 | HCL       |
-| 25 | Varun    |  82000 | Google    |
-| 26 | Shalini  |  74000 | Amazon    |
-| 27 | Kunal    |  70000 | Microsoft |
-| 28 | Ayesha   |  58000 | Accenture |
-| 29 | Naveen   |  66000 | IBM       |
-| 30 | Tanvi    |  60000 | Deloitte  |
-+----+----------+--------+-----------+
-30 rows in set (0.02 sec)
 
 mysql> select * FROM employee where company = 'infosys';
 +----+----------+--------+---------+
@@ -203,9 +203,6 @@ mysql> select * from employee where salary > 50000;
 | 30 | Tanvi   |  60000 | Deloitte  |
 +----+---------+--------+-----------+
 24 rows in set (0.00 sec)
-
-mysql> select * FROM employee order by salary ase;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ase' at line 1
 
 mysql> select * from employee order by salary asc;
 +----+----------+--------+-----------+
