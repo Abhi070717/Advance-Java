@@ -1,0 +1,25 @@
+Enter password: ****(root)
+
+mysql> show databases;
+
+mysql> create database rays;
+
+mysql> use rays;
+
+mysql> create table Employee(Id int primary key, Name varchar(45), Salary int, Company varchar(45));
+mysql> Insert into employee values(1, 'Shreeram', 45000, 'Infosys'),___,_____;
+
+mysql> select * from employee;
+mysql> select name from employee;
+mysql> select name,salary from employee;			//print attributes
+mysql> select * from employee where salary > 50000;		//search by conditions
+mysql> select * from employee where salary >= 50000;		//----
+mysql> select * from employee where salary = 50000;		//----	
+mysql> select * from employee where name = 'priya';		//search by name
+mysql> select * from employee where company = 'infosys';	//search by company name	
+mysql> select * from employee where name like 'p%';		//search by letter starts from
+mysql> select * from employee where name like '%p';		//search by letter ends with
+mysql> select * from employee where name like '%p%';		//search by letter any where in the name colomn
+mysql> select * from employee where company like '%a%';		//same as above company colomn
+mysql> select * from employee order by salary asc;		//order by - use to arrange in ascending order
+mysql> select * from employee order by salary desc;		//descending order
