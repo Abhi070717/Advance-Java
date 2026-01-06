@@ -1,6 +1,6 @@
-Enter password: ****(root)
+Enter password: ****   (root)
 Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 14
+Your MySQL connection id is 8
 Server version: 8.0.31 MySQL Community Server - GPL
 
 Copyright (c) 2000, 2022, Oracle and/or its affiliates.
@@ -11,8 +11,29 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.04 sec)
+
+mysql> create database rays;
+Query OK, 1 row affected (0.02 sec)
+
 mysql> use rays;
 Database changed
+
+mysql> CREATE TABLE employee(Id INT PRIMARY KEY, Name VARCHAR(45), Salary int, Company_Name VARCHAR(45));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> INSERT INTO Employee (Id, Name, Salary, Company_Name) VALUES (1,'Shreeram',45000,'Infosys'),(2,'Ranvijay',39000,'Zensar'),(3,'Karan',60000,'Wipro'),(4,'Sneha',48000,'HCL'),(5,'Rahul',75000,'Google'),(6,'Neha',70000,'Amazon'),(7,'Vikram',68000,'Microsoft'),(8,'Pooja',55000,'Accenture'),(9,'Arjun',62000,'IBM'),(10,'Ananya',58000,'Deloitte'),(11,'Suresh',50000,'TCS'),(12,'Meena',54000,'Infosys'),(13,'Rohit',61000,'Wipro'),(14,'Kavya',47000,'HCL'),(15,'Nikhil',80000,'Google'),(16,'Priya',72000,'Amazon'),(17,'Manoj',69000,'Microsoft'),(18,'Divya',56000,'Accenture'),(19,'Sahil',63000,'IBM'),(20,'Isha',59000,'Deloitte'),(21,'Ajay',51000,'TCS'),(22,'Bhavna',55000,'Infosys'),(23,'Deepak',64000,'Wipro'),(24,'Ritu',49000,'HCL'),(25,'Varun',82000,'Google'),(26,'Shalini',74000,'Amazon'),(27,'Kunal',70000,'Microsoft'),(28,'Ayesha',58000,'Accenture'),(29,'Naveen',66000,'IBM'),(30,'Tanvi',60000,'Deloitte');
+Query OK, 30 rows affected (0.02 sec)
+Records: 30  Duplicates: 0  Warnings: 0
 
 mysql> select * FROM employee;
 +----+----------+--------+-----------+
@@ -106,7 +127,7 @@ mysql> select * FROM employee where name like '%s%';
 +----+----------+--------+-----------+
 7 rows in set (0.00 sec)
 
-mysql> select * FROM employee where company = 'infosys';
+mysql> select * FROM employee where company_Name = 'infosys';
 +----+----------+--------+---------+
 | Id | Name     | Salary | Company |
 +----+----------+--------+---------+
@@ -116,166 +137,529 @@ mysql> select * FROM employee where company = 'infosys';
 +----+----------+--------+---------+
 3 rows in set (0.00 sec)
 
+mysql> select * FROM employee where company_Name = 'Infosys';
++----+----------+--------+--------------+
+| Id | Name     | Salary | Company_Name |
++----+----------+--------+--------------+
+|  1 | Shreeram |  45000 | Infosys      |
+| 12 | Meena    |  54000 | Infosys      |
+| 22 | Bhavna   |  55000 | Infosys      |
++----+----------+--------+--------------+
+3 rows in set (0.00 sec)
+
 mysql> select * from employee where salary >= 50000;
-+----+---------+--------+-----------+
-| Id | Name    | Salary | Company   |
-+----+---------+--------+-----------+
-|  3 | Karan   |  60000 | Wipro     |
-|  5 | Rahul   |  75000 | Google    |
-|  6 | Neha    |  70000 | Amazon    |
-|  7 | Vikram  |  68000 | Microsoft |
-|  8 | Pooja   |  55000 | Accenture |
-|  9 | Arjun   |  62000 | IBM       |
-| 10 | Ananya  |  58000 | Deloitte  |
-| 11 | Suresh  |  50000 | TCS       |
-| 12 | Meena   |  54000 | Infosys   |
-| 13 | Rohit   |  61000 | Wipro     |
-| 15 | Nikhil  |  80000 | Google    |
-| 16 | Priya   |  72000 | Amazon    |
-| 17 | Manoj   |  69000 | Microsoft |
-| 18 | Divya   |  56000 | Accenture |
-| 19 | Sahil   |  63000 | IBM       |
-| 20 | Isha    |  59000 | Deloitte  |
-| 21 | Ajay    |  51000 | TCS       |
-| 22 | Bhavna  |  55000 | Infosys   |
-| 23 | Deepak  |  64000 | Wipro     |
-| 25 | Varun   |  82000 | Google    |
-| 26 | Shalini |  74000 | Amazon    |
-| 27 | Kunal   |  70000 | Microsoft |
-| 28 | Ayesha  |  58000 | Accenture |
-| 29 | Naveen  |  66000 | IBM       |
-| 30 | Tanvi   |  60000 | Deloitte  |
-+----+---------+--------+-----------+
-25 rows in set (0.00 sec)
++----+---------+--------+--------------+
+| Id | Name    | Salary | Company_Name |
++----+---------+--------+--------------+
+|  3 | Karan   |  60000 | Wipro        |
+|  5 | Rahul   |  75000 | Google       |
+|  6 | Neha    |  70000 | Amazon       |
+|  7 | Vikram  |  68000 | Microsoft    |
+|  8 | Pooja   |  55000 | Accenture    |
+|  9 | Arjun   |  62000 | IBM          |
+| 10 | Ananya  |  58000 | Deloitte     |
+| 11 | Suresh  |  50000 | TCS          |
+| 12 | Meena   |  54000 | Infosys      |
+| 13 | Rohit   |  61000 | Wipro        |
+| 15 | Nikhil  |  80000 | Google       |
+| 16 | Priya   |  72000 | Amazon       |
+| 17 | Manoj   |  69000 | Microsoft    |
+| 18 | Divya   |  56000 | Accenture    |
+| 19 | Sahil   |  63000 | IBM          |
+| 20 | Isha    |  59000 | Deloitte     |
+| 21 | Ajay    |  51000 | TCS          |
+| 22 | Bhavna  |  55000 | Infosys      |
+| 23 | Deepak  |  64000 | Wipro        |
+| 25 | Varun   |  82000 | Google       |
+| 26 | Shalini |  74000 | Amazon       |
+| 27 | Kunal   |  70000 | Microsoft    |
+| 28 | Ayesha  |  58000 | Accenture    |
+| 29 | Naveen  |  66000 | IBM          |
+| 30 | Tanvi   |  60000 | Deloitte     |
++----+---------+--------+--------------+
+25 rows in set (0.01 sec)
 
 mysql> select * from employee where salary <= 50000;
-+----+----------+--------+---------+
-| Id | Name     | Salary | Company |
-+----+----------+--------+---------+
-|  1 | Shreeram |  45000 | Infosys |
-|  2 | Ranvijay |  39000 | Zensar  |
-|  4 | Sneha    |  48000 | HCL     |
-| 11 | Suresh   |  50000 | TCS     |
-| 14 | Kavya    |  47000 | HCL     |
-| 24 | Ritu     |  49000 | HCL     |
-+----+----------+--------+---------+
++----+----------+--------+--------------+
+| Id | Name     | Salary | Company_Name |
++----+----------+--------+--------------+
+|  1 | Shreeram |  45000 | Infosys      |
+|  2 | Ranvijay |  39000 | Zensar       |
+|  4 | Sneha    |  48000 | HCL          |
+| 11 | Suresh   |  50000 | TCS          |
+| 14 | Kavya    |  47000 | HCL          |
+| 24 | Ritu     |  49000 | HCL          |
++----+----------+--------+--------------+
 6 rows in set (0.00 sec)
 
 mysql> select * from employee where salary < 50000;
-+----+----------+--------+---------+
-| Id | Name     | Salary | Company |
-+----+----------+--------+---------+
-|  1 | Shreeram |  45000 | Infosys |
-|  2 | Ranvijay |  39000 | Zensar  |
-|  4 | Sneha    |  48000 | HCL     |
-| 14 | Kavya    |  47000 | HCL     |
-| 24 | Ritu     |  49000 | HCL     |
-+----+----------+--------+---------+
++----+----------+--------+--------------+
+| Id | Name     | Salary | Company_Name |
++----+----------+--------+--------------+
+|  1 | Shreeram |  45000 | Infosys      |
+|  2 | Ranvijay |  39000 | Zensar       |
+|  4 | Sneha    |  48000 | HCL          |
+| 14 | Kavya    |  47000 | HCL          |
+| 24 | Ritu     |  49000 | HCL          |
++----+----------+--------+--------------+
 5 rows in set (0.00 sec)
 
 mysql> select * from employee where salary > 50000;
-+----+---------+--------+-----------+
-| Id | Name    | Salary | Company   |
-+----+---------+--------+-----------+
-|  3 | Karan   |  60000 | Wipro     |
-|  5 | Rahul   |  75000 | Google    |
-|  6 | Neha    |  70000 | Amazon    |
-|  7 | Vikram  |  68000 | Microsoft |
-|  8 | Pooja   |  55000 | Accenture |
-|  9 | Arjun   |  62000 | IBM       |
-| 10 | Ananya  |  58000 | Deloitte  |
-| 12 | Meena   |  54000 | Infosys   |
-| 13 | Rohit   |  61000 | Wipro     |
-| 15 | Nikhil  |  80000 | Google    |
-| 16 | Priya   |  72000 | Amazon    |
-| 17 | Manoj   |  69000 | Microsoft |
-| 18 | Divya   |  56000 | Accenture |
-| 19 | Sahil   |  63000 | IBM       |
-| 20 | Isha    |  59000 | Deloitte  |
-| 21 | Ajay    |  51000 | TCS       |
-| 22 | Bhavna  |  55000 | Infosys   |
-| 23 | Deepak  |  64000 | Wipro     |
-| 25 | Varun   |  82000 | Google    |
-| 26 | Shalini |  74000 | Amazon    |
-| 27 | Kunal   |  70000 | Microsoft |
-| 28 | Ayesha  |  58000 | Accenture |
-| 29 | Naveen  |  66000 | IBM       |
-| 30 | Tanvi   |  60000 | Deloitte  |
-+----+---------+--------+-----------+
++----+---------+--------+--------------+
+| Id | Name    | Salary | Company_Name |
++----+---------+--------+--------------+
+|  3 | Karan   |  60000 | Wipro        |
+|  5 | Rahul   |  75000 | Google       |
+|  6 | Neha    |  70000 | Amazon       |
+|  7 | Vikram  |  68000 | Microsoft    |
+|  8 | Pooja   |  55000 | Accenture    |
+|  9 | Arjun   |  62000 | IBM          |
+| 10 | Ananya  |  58000 | Deloitte     |
+| 12 | Meena   |  54000 | Infosys      |
+| 13 | Rohit   |  61000 | Wipro        |
+| 15 | Nikhil  |  80000 | Google       |
+| 16 | Priya   |  72000 | Amazon       |
+| 17 | Manoj   |  69000 | Microsoft    |
+| 18 | Divya   |  56000 | Accenture    |
+| 19 | Sahil   |  63000 | IBM          |
+| 20 | Isha    |  59000 | Deloitte     |
+| 21 | Ajay    |  51000 | TCS          |
+| 22 | Bhavna  |  55000 | Infosys      |
+| 23 | Deepak  |  64000 | Wipro        |
+| 25 | Varun   |  82000 | Google       |
+| 26 | Shalini |  74000 | Amazon       |
+| 27 | Kunal   |  70000 | Microsoft    |
+| 28 | Ayesha  |  58000 | Accenture    |
+| 29 | Naveen  |  66000 | IBM          |
+| 30 | Tanvi   |  60000 | Deloitte     |
++----+---------+--------+--------------+
 24 rows in set (0.00 sec)
 
 mysql> select * from employee order by salary asc;
-+----+----------+--------+-----------+
-| Id | Name     | Salary | Company   |
-+----+----------+--------+-----------+
-|  2 | Ranvijay |  39000 | Zensar    |
-|  1 | Shreeram |  45000 | Infosys   |
-| 14 | Kavya    |  47000 | HCL       |
-|  4 | Sneha    |  48000 | HCL       |
-| 24 | Ritu     |  49000 | HCL       |
-| 11 | Suresh   |  50000 | TCS       |
-| 21 | Ajay     |  51000 | TCS       |
-| 12 | Meena    |  54000 | Infosys   |
-|  8 | Pooja    |  55000 | Accenture |
-| 22 | Bhavna   |  55000 | Infosys   |
-| 18 | Divya    |  56000 | Accenture |
-| 10 | Ananya   |  58000 | Deloitte  |
-| 28 | Ayesha   |  58000 | Accenture |
-| 20 | Isha     |  59000 | Deloitte  |
-|  3 | Karan    |  60000 | Wipro     |
-| 30 | Tanvi    |  60000 | Deloitte  |
-| 13 | Rohit    |  61000 | Wipro     |
-|  9 | Arjun    |  62000 | IBM       |
-| 19 | Sahil    |  63000 | IBM       |
-| 23 | Deepak   |  64000 | Wipro     |
-| 29 | Naveen   |  66000 | IBM       |
-|  7 | Vikram   |  68000 | Microsoft |
-| 17 | Manoj    |  69000 | Microsoft |
-|  6 | Neha     |  70000 | Amazon    |
-| 27 | Kunal    |  70000 | Microsoft |
-| 16 | Priya    |  72000 | Amazon    |
-| 26 | Shalini  |  74000 | Amazon    |
-|  5 | Rahul    |  75000 | Google    |
-| 15 | Nikhil   |  80000 | Google    |
-| 25 | Varun    |  82000 | Google    |
-+----+----------+--------+-----------+
-30 rows in set (0.02 sec)
++----+----------+--------+--------------+
+| Id | Name     | Salary | Company_Name |
++----+----------+--------+--------------+
+|  2 | Ranvijay |  39000 | Zensar       |
+|  1 | Shreeram |  45000 | Infosys      |
+| 14 | Kavya    |  47000 | HCL          |
+|  4 | Sneha    |  48000 | HCL          |
+| 24 | Ritu     |  49000 | HCL          |
+| 11 | Suresh   |  50000 | TCS          |
+| 21 | Ajay     |  51000 | TCS          |
+| 12 | Meena    |  54000 | Infosys      |
+|  8 | Pooja    |  55000 | Accenture    |
+| 22 | Bhavna   |  55000 | Infosys      |
+| 18 | Divya    |  56000 | Accenture    |
+| 10 | Ananya   |  58000 | Deloitte     |
+| 28 | Ayesha   |  58000 | Accenture    |
+| 20 | Isha     |  59000 | Deloitte     |
+|  3 | Karan    |  60000 | Wipro        |
+| 30 | Tanvi    |  60000 | Deloitte     |
+| 13 | Rohit    |  61000 | Wipro        |
+|  9 | Arjun    |  62000 | IBM          |
+| 19 | Sahil    |  63000 | IBM          |
+| 23 | Deepak   |  64000 | Wipro        |
+| 29 | Naveen   |  66000 | IBM          |
+|  7 | Vikram   |  68000 | Microsoft    |
+| 17 | Manoj    |  69000 | Microsoft    |
+|  6 | Neha     |  70000 | Amazon       |
+| 27 | Kunal    |  70000 | Microsoft    |
+| 16 | Priya    |  72000 | Amazon       |
+| 26 | Shalini  |  74000 | Amazon       |
+|  5 | Rahul    |  75000 | Google       |
+| 15 | Nikhil   |  80000 | Google       |
+| 25 | Varun    |  82000 | Google       |
++----+----------+--------+--------------+
+30 rows in set (0.00 sec)
 
 mysql> select * from employee order by salary desc;
-+----+----------+--------+-----------+
-| Id | Name     | Salary | Company   |
-+----+----------+--------+-----------+
-| 25 | Varun    |  82000 | Google    |
-| 15 | Nikhil   |  80000 | Google    |
-|  5 | Rahul    |  75000 | Google    |
-| 26 | Shalini  |  74000 | Amazon    |
-| 16 | Priya    |  72000 | Amazon    |
-|  6 | Neha     |  70000 | Amazon    |
-| 27 | Kunal    |  70000 | Microsoft |
-| 17 | Manoj    |  69000 | Microsoft |
-|  7 | Vikram   |  68000 | Microsoft |
-| 29 | Naveen   |  66000 | IBM       |
-| 23 | Deepak   |  64000 | Wipro     |
-| 19 | Sahil    |  63000 | IBM       |
-|  9 | Arjun    |  62000 | IBM       |
-| 13 | Rohit    |  61000 | Wipro     |
-|  3 | Karan    |  60000 | Wipro     |
-| 30 | Tanvi    |  60000 | Deloitte  |
-| 20 | Isha     |  59000 | Deloitte  |
-| 10 | Ananya   |  58000 | Deloitte  |
-| 28 | Ayesha   |  58000 | Accenture |
-| 18 | Divya    |  56000 | Accenture |
-|  8 | Pooja    |  55000 | Accenture |
-| 22 | Bhavna   |  55000 | Infosys   |
-| 12 | Meena    |  54000 | Infosys   |
-| 21 | Ajay     |  51000 | TCS       |
-| 11 | Suresh   |  50000 | TCS       |
-| 24 | Ritu     |  49000 | HCL       |
-|  4 | Sneha    |  48000 | HCL       |
-| 14 | Kavya    |  47000 | HCL       |
-|  1 | Shreeram |  45000 | Infosys   |
-|  2 | Ranvijay |  39000 | Zensar    |
-+----+----------+--------+-----------+
++----+----------+--------+--------------+
+| Id | Name     | Salary | Company_Name |
++----+----------+--------+--------------+
+| 25 | Varun    |  82000 | Google       |
+| 15 | Nikhil   |  80000 | Google       |
+|  5 | Rahul    |  75000 | Google       |
+| 26 | Shalini  |  74000 | Amazon       |
+| 16 | Priya    |  72000 | Amazon       |
+|  6 | Neha     |  70000 | Amazon       |
+| 27 | Kunal    |  70000 | Microsoft    |
+| 17 | Manoj    |  69000 | Microsoft    |
+|  7 | Vikram   |  68000 | Microsoft    |
+| 29 | Naveen   |  66000 | IBM          |
+| 23 | Deepak   |  64000 | Wipro        |
+| 19 | Sahil    |  63000 | IBM          |
+|  9 | Arjun    |  62000 | IBM          |
+| 13 | Rohit    |  61000 | Wipro        |
+|  3 | Karan    |  60000 | Wipro        |
+| 30 | Tanvi    |  60000 | Deloitte     |
+| 20 | Isha     |  59000 | Deloitte     |
+| 10 | Ananya   |  58000 | Deloitte     |
+| 28 | Ayesha   |  58000 | Accenture    |
+| 18 | Divya    |  56000 | Accenture    |
+|  8 | Pooja    |  55000 | Accenture    |
+| 22 | Bhavna   |  55000 | Infosys      |
+| 12 | Meena    |  54000 | Infosys      |
+| 21 | Ajay     |  51000 | TCS          |
+| 11 | Suresh   |  50000 | TCS          |
+| 24 | Ritu     |  49000 | HCL          |
+|  4 | Sneha    |  48000 | HCL          |
+| 14 | Kavya    |  47000 | HCL          |
+|  1 | Shreeram |  45000 | Infosys      |
+|  2 | Ranvijay |  39000 | Zensar       |
++----+----------+--------+--------------+
 30 rows in set (0.00 sec)
+
+mysql> INSERT INTO Employee (Id, Name, Salary, Company_Name) VALUES(31, 'Amit', 45000, 'TCS'),(32, 'Riya', 52000, 'Infosys'),(33, 'Karan', 60000, 'Wipro'),(34, 'Sneha', 48000, 'HCL'),(35, 'Rahul', 75000, 'Google'),(36, 'Neha', 70000, 'Amazon'),(37, 'Vikram', 68000, 'Microsoft'),(38, 'Pooja', 55000, 'Accenture'),(39, 'Arjun', 62000, 'IBM'),(40, 'Ananya', 58000, 'Deloitte');
+Query OK, 10 rows affected (0.00 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++----+----------+--------+--------------+
+| Id | Name     | Salary | Company_Name |
++----+----------+--------+--------------+
+|  1 | Shreeram |  45000 | Infosys      |
+|  2 | Ranvijay |  39000 | Zensar       |
+|  3 | Karan    |  60000 | Wipro        |
+|  4 | Sneha    |  48000 | HCL          |
+|  5 | Rahul    |  75000 | Google       |
+|  6 | Neha     |  70000 | Amazon       |
+|  7 | Vikram   |  68000 | Microsoft    |
+|  8 | Pooja    |  55000 | Accenture    |
+|  9 | Arjun    |  62000 | IBM          |
+| 10 | Ananya   |  58000 | Deloitte     |
+| 11 | Suresh   |  50000 | TCS          |
+| 12 | Meena    |  54000 | Infosys      |
+| 13 | Rohit    |  61000 | Wipro        |
+| 14 | Kavya    |  47000 | HCL          |
+| 15 | Nikhil   |  80000 | Google       |
+| 16 | Priya    |  72000 | Amazon       |
+| 17 | Manoj    |  69000 | Microsoft    |
+| 18 | Divya    |  56000 | Accenture    |
+| 19 | Sahil    |  63000 | IBM          |
+| 20 | Isha     |  59000 | Deloitte     |
+| 21 | Ajay     |  51000 | TCS          |
+| 22 | Bhavna   |  55000 | Infosys      |
+| 23 | Deepak   |  64000 | Wipro        |
+| 24 | Ritu     |  49000 | HCL          |
+| 25 | Varun    |  82000 | Google       |
+| 26 | Shalini  |  74000 | Amazon       |
+| 27 | Kunal    |  70000 | Microsoft    |
+| 28 | Ayesha   |  58000 | Accenture    |
+| 29 | Naveen   |  66000 | IBM          |
+| 30 | Tanvi    |  60000 | Deloitte     |
+| 31 | Amit     |  45000 | TCS          |
+| 32 | Riya     |  52000 | Infosys      |
+| 33 | Karan    |  60000 | Wipro        |
+| 34 | Sneha    |  48000 | HCL          |
+| 35 | Rahul    |  75000 | Google       |
+| 36 | Neha     |  70000 | Amazon       |
+| 37 | Vikram   |  68000 | Microsoft    |
+| 38 | Pooja    |  55000 | Accenture    |
+| 39 | Arjun    |  62000 | IBM          |
+| 40 | Ananya   |  58000 | Deloitte     |
++----+----------+--------+--------------+
+40 rows in set (0.00 sec)
+
+mysql> CREATE TABLE Marksheet(Serial_No INT PRIMARY KEY, Name VARCHAR(45), Physics int,  chemistry int , Math int );
+
+mysql> INSERT INTO Marksheet (Serial_No, Name, Physics, Chemistry, Math) VALUES (1,'Amit',45,55,60),(2,'Neha',30,65,70),(3,'Rahul',75,28,80),(4,'Sneha',55,60,32),(5,'Karan',80,72,68),(6,'Pooja',35,40,45),(7,'Arjun',90,88,92),(8,'Meena',25,55,60),(9,'Vikram',60,35,58),(10,'Ananya',70,75,80),(11,'Rohit',33,30,35),(12,'Kavya',85,90,95),(13,'Suresh',40,42,38),(14,'Divya',65,28,72),(15,'Nikhil',78,82,29),(16,'Priya',55,60,65),(17,'Manoj',20,45,50),(18,'Ritu',68,70,75),(19,'Sahil',32,34,36),(20,'Tanvi',88,85,90);
+Query OK, 20 rows affected (0.02 sec)
+Records: 20  Duplicates: 0  Warnings: 0
+
+mysql> select * from marksheet;
++-----------+--------+---------+-----------+------+
+| Serial_No | Name   | Physics | chemistry | Math |
++-----------+--------+---------+-----------+------+
+|         1 | Amit   |      45 |        55 |   60 |
+|         2 | Neha   |      30 |        65 |   70 |
+|         3 | Rahul  |      75 |        28 |   80 |
+|         4 | Sneha  |      55 |        60 |   32 |
+|         5 | Karan  |      80 |        72 |   68 |
+|         6 | Pooja  |      35 |        40 |   45 |
+|         7 | Arjun  |      90 |        88 |   92 |
+|         8 | Meena  |      25 |        55 |   60 |
+|         9 | Vikram |      60 |        35 |   58 |
+|        10 | Ananya |      70 |        75 |   80 |
+|        11 | Rohit  |      33 |        30 |   35 |
+|        12 | Kavya  |      85 |        90 |   95 |
+|        13 | Suresh |      40 |        42 |   38 |
+|        14 | Divya  |      65 |        28 |   72 |
+|        15 | Nikhil |      78 |        82 |   29 |
+|        16 | Priya  |      55 |        60 |   65 |
+|        17 | Manoj  |      20 |        45 |   50 |
+|        18 | Ritu   |      68 |        70 |   75 |
+|        19 | Sahil  |      32 |        34 |   36 |
+|        20 | Tanvi  |      88 |        85 |   90 |
++-----------+--------+---------+-----------+------+
+20 rows in set (0.00 sec)
+
+mysql> select * ,(Physics+chemistry+math) as Total from marksheet;
++-----------+--------+---------+-----------+------+-------+
+| Serial_No | Name   | Physics | chemistry | Math | Total |
++-----------+--------+---------+-----------+------+-------+
+|         1 | Amit   |      45 |        55 |   60 |   160 |
+|         2 | Neha   |      30 |        65 |   70 |   165 |
+|         3 | Rahul  |      75 |        28 |   80 |   183 |
+|         4 | Sneha  |      55 |        60 |   32 |   147 |
+|         5 | Karan  |      80 |        72 |   68 |   220 |
+|         6 | Pooja  |      35 |        40 |   45 |   120 |
+|         7 | Arjun  |      90 |        88 |   92 |   270 |
+|         8 | Meena  |      25 |        55 |   60 |   140 |
+|         9 | Vikram |      60 |        35 |   58 |   153 |
+|        10 | Ananya |      70 |        75 |   80 |   225 |
+|        11 | Rohit  |      33 |        30 |   35 |    98 |
+|        12 | Kavya  |      85 |        90 |   95 |   270 |
+|        13 | Suresh |      40 |        42 |   38 |   120 |
+|        14 | Divya  |      65 |        28 |   72 |   165 |
+|        15 | Nikhil |      78 |        82 |   29 |   189 |
+|        16 | Priya  |      55 |        60 |   65 |   180 |
+|        17 | Manoj  |      20 |        45 |   50 |   115 |
+|        18 | Ritu   |      68 |        70 |   75 |   213 |
+|        19 | Sahil  |      32 |        34 |   36 |   102 |
+|        20 | Tanvi  |      88 |        85 |   90 |   263 |
++-----------+--------+---------+-----------+------+-------+
+20 rows in set (0.01 sec)
+
+mysql> select * ,(Physics+chemistry+math) as Total, ((physics+chemistry+math)/2) as Percentage from marksheet;
++-----------+--------+---------+-----------+------+-------+------------+
+| Serial_No | Name   | Physics | chemistry | Math | Total | Percentage |
++-----------+--------+---------+-----------+------+-------+------------+
+|         1 | Amit   |      45 |        55 |   60 |   160 |    80.0000 |
+|         2 | Neha   |      30 |        65 |   70 |   165 |    82.5000 |
+|         3 | Rahul  |      75 |        28 |   80 |   183 |    91.5000 |
+|         4 | Sneha  |      55 |        60 |   32 |   147 |    73.5000 |
+|         5 | Karan  |      80 |        72 |   68 |   220 |   110.0000 |
+|         6 | Pooja  |      35 |        40 |   45 |   120 |    60.0000 |
+|         7 | Arjun  |      90 |        88 |   92 |   270 |   135.0000 |
+|         8 | Meena  |      25 |        55 |   60 |   140 |    70.0000 |
+|         9 | Vikram |      60 |        35 |   58 |   153 |    76.5000 |
+|        10 | Ananya |      70 |        75 |   80 |   225 |   112.5000 |
+|        11 | Rohit  |      33 |        30 |   35 |    98 |    49.0000 |
+|        12 | Kavya  |      85 |        90 |   95 |   270 |   135.0000 |
+|        13 | Suresh |      40 |        42 |   38 |   120 |    60.0000 |
+|        14 | Divya  |      65 |        28 |   72 |   165 |    82.5000 |
+|        15 | Nikhil |      78 |        82 |   29 |   189 |    94.5000 |
+|        16 | Priya  |      55 |        60 |   65 |   180 |    90.0000 |
+|        17 | Manoj  |      20 |        45 |   50 |   115 |    57.5000 |
+|        18 | Ritu   |      68 |        70 |   75 |   213 |   106.5000 |
+|        19 | Sahil  |      32 |        34 |   36 |   102 |    51.0000 |
+|        20 | Tanvi  |      88 |        85 |   90 |   263 |   131.5000 |
++-----------+--------+---------+-----------+------+-------+------------+
+20 rows in set (0.00 sec)
+
+mysql> select * ,(Physics+chemistry+math) as Total, ((physics+chemistry+math)/3) as Percentage from marksheet;
++-----------+--------+---------+-----------+------+-------+------------+
+| Serial_No | Name   | Physics | chemistry | Math | Total | Percentage |
++-----------+--------+---------+-----------+------+-------+------------+
+|         1 | Amit   |      45 |        55 |   60 |   160 |    53.3333 |
+|         2 | Neha   |      30 |        65 |   70 |   165 |    55.0000 |
+|         3 | Rahul  |      75 |        28 |   80 |   183 |    61.0000 |
+|         4 | Sneha  |      55 |        60 |   32 |   147 |    49.0000 |
+|         5 | Karan  |      80 |        72 |   68 |   220 |    73.3333 |
+|         6 | Pooja  |      35 |        40 |   45 |   120 |    40.0000 |
+|         7 | Arjun  |      90 |        88 |   92 |   270 |    90.0000 |
+|         8 | Meena  |      25 |        55 |   60 |   140 |    46.6667 |
+|         9 | Vikram |      60 |        35 |   58 |   153 |    51.0000 |
+|        10 | Ananya |      70 |        75 |   80 |   225 |    75.0000 |
+|        11 | Rohit  |      33 |        30 |   35 |    98 |    32.6667 |
+|        12 | Kavya  |      85 |        90 |   95 |   270 |    90.0000 |
+|        13 | Suresh |      40 |        42 |   38 |   120 |    40.0000 |
+|        14 | Divya  |      65 |        28 |   72 |   165 |    55.0000 |
+|        15 | Nikhil |      78 |        82 |   29 |   189 |    63.0000 |
+|        16 | Priya  |      55 |        60 |   65 |   180 |    60.0000 |
+|        17 | Manoj  |      20 |        45 |   50 |   115 |    38.3333 |
+|        18 | Ritu   |      68 |        70 |   75 |   213 |    71.0000 |
+|        19 | Sahil  |      32 |        34 |   36 |   102 |    34.0000 |
+|        20 | Tanvi  |      88 |        85 |   90 |   263 |    87.6667 |
++-----------+--------+---------+-----------+------+-------+------------+
+20 rows in set (0.00 sec)
+
+mysql> select * ,(Physics+chemistry+math) as Total, ((physics+chemistry+math)/3) as Percentage, if(physics >= 33 and chemistry >= 33 and math >= 33, 'Pass', 'Fail') as Result from marksheet;
++-----------+--------+---------+-----------+------+-------+------------+--------+
+| Serial_No | Name   | Physics | chemistry | Math | Total | Percentage | Result |
++-----------+--------+---------+-----------+------+-------+------------+--------+
+|         1 | Amit   |      45 |        55 |   60 |   160 |    53.3333 | Pass   |
+|         2 | Neha   |      30 |        65 |   70 |   165 |    55.0000 | Fail   |
+|         3 | Rahul  |      75 |        28 |   80 |   183 |    61.0000 | Fail   |
+|         4 | Sneha  |      55 |        60 |   32 |   147 |    49.0000 | Fail   |
+|         5 | Karan  |      80 |        72 |   68 |   220 |    73.3333 | Pass   |
+|         6 | Pooja  |      35 |        40 |   45 |   120 |    40.0000 | Pass   |
+|         7 | Arjun  |      90 |        88 |   92 |   270 |    90.0000 | Pass   |
+|         8 | Meena  |      25 |        55 |   60 |   140 |    46.6667 | Fail   |
+|         9 | Vikram |      60 |        35 |   58 |   153 |    51.0000 | Pass   |
+|        10 | Ananya |      70 |        75 |   80 |   225 |    75.0000 | Pass   |
+|        11 | Rohit  |      33 |        30 |   35 |    98 |    32.6667 | Fail   |
+|        12 | Kavya  |      85 |        90 |   95 |   270 |    90.0000 | Pass   |
+|        13 | Suresh |      40 |        42 |   38 |   120 |    40.0000 | Pass   |
+|        14 | Divya  |      65 |        28 |   72 |   165 |    55.0000 | Fail   |
+|        15 | Nikhil |      78 |        82 |   29 |   189 |    63.0000 | Fail   |
+|        16 | Priya  |      55 |        60 |   65 |   180 |    60.0000 | Pass   |
+|        17 | Manoj  |      20 |        45 |   50 |   115 |    38.3333 | Fail   |
+|        18 | Ritu   |      68 |        70 |   75 |   213 |    71.0000 | Pass   |
+|        19 | Sahil  |      32 |        34 |   36 |   102 |    34.0000 | Fail   |
+|        20 | Tanvi  |      88 |        85 |   90 |   263 |    87.6667 | Pass   |
++-----------+--------+---------+-----------+------+-------+------------+--------+
+20 rows in set (0.00 sec)
+
+mysql> select * ,(Physics+chemistry+math) as Total, ((physics+chemistry+math)/3) as Percentage, if(physics >= 33 and chemistry >= 33 and math >= 33, 'Pass', 'Fail') as Result from marksheet order by total desc;
++-----------+--------+---------+-----------+------+-------+------------+--------+
+| Serial_No | Name   | Physics | chemistry | Math | Total | Percentage | Result |
++-----------+--------+---------+-----------+------+-------+------------+--------+
+|         7 | Arjun  |      90 |        88 |   92 |   270 |    90.0000 | Pass   |
+|        12 | Kavya  |      85 |        90 |   95 |   270 |    90.0000 | Pass   |
+|        20 | Tanvi  |      88 |        85 |   90 |   263 |    87.6667 | Pass   |
+|        10 | Ananya |      70 |        75 |   80 |   225 |    75.0000 | Pass   |
+|         5 | Karan  |      80 |        72 |   68 |   220 |    73.3333 | Pass   |
+|        18 | Ritu   |      68 |        70 |   75 |   213 |    71.0000 | Pass   |
+|        15 | Nikhil |      78 |        82 |   29 |   189 |    63.0000 | Fail   |
+|         3 | Rahul  |      75 |        28 |   80 |   183 |    61.0000 | Fail   |
+|        16 | Priya  |      55 |        60 |   65 |   180 |    60.0000 | Pass   |
+|         2 | Neha   |      30 |        65 |   70 |   165 |    55.0000 | Fail   |
+|        14 | Divya  |      65 |        28 |   72 |   165 |    55.0000 | Fail   |
+|         1 | Amit   |      45 |        55 |   60 |   160 |    53.3333 | Pass   |
+|         9 | Vikram |      60 |        35 |   58 |   153 |    51.0000 | Pass   |
+|         4 | Sneha  |      55 |        60 |   32 |   147 |    49.0000 | Fail   |
+|         8 | Meena  |      25 |        55 |   60 |   140 |    46.6667 | Fail   |
+|         6 | Pooja  |      35 |        40 |   45 |   120 |    40.0000 | Pass   |
+|        13 | Suresh |      40 |        42 |   38 |   120 |    40.0000 | Pass   |
+|        17 | Manoj  |      20 |        45 |   50 |   115 |    38.3333 | Fail   |
+|        19 | Sahil  |      32 |        34 |   36 |   102 |    34.0000 | Fail   |
+|        11 | Rohit  |      33 |        30 |   35 |    98 |    32.6667 | Fail   |
++-----------+--------+---------+-----------+------+-------+------------+--------+
+20 rows in set (0.00 sec)
+
+Pagenation--------------------------------------------------------------------------------------------------------------------------
+
+mysql> select * from employee;
++----+----------+--------+--------------+
+| Id | Name     | Salary | Company_Name |
++----+----------+--------+--------------+
+|  1 | Shreeram |  45000 | Infosys      |
+|  2 | Ranvijay |  39000 | Zensar       |
+|  3 | Karan    |  60000 | Wipro        |
+|  4 | Sneha    |  48000 | HCL          |
+|  5 | Rahul    |  75000 | Google       |
+|  6 | Neha     |  70000 | Amazon       |
+|  7 | Vikram   |  68000 | Microsoft    |
+|  8 | Pooja    |  55000 | Accenture    |
+|  9 | Arjun    |  62000 | IBM          |
+| 10 | Ananya   |  58000 | Deloitte     |
+| 11 | Suresh   |  50000 | TCS          |
+| 12 | Meena    |  54000 | Infosys      |
+| 13 | Rohit    |  61000 | Wipro        |
+| 14 | Kavya    |  47000 | HCL          |
+| 15 | Nikhil   |  80000 | Google       |
+| 16 | Priya    |  72000 | Amazon       |
+| 17 | Manoj    |  69000 | Microsoft    |
+| 18 | Divya    |  56000 | Accenture    |
+| 19 | Sahil    |  63000 | IBM          |
+| 20 | Isha     |  59000 | Deloitte     |
+| 21 | Ajay     |  51000 | TCS          |
+| 22 | Bhavna   |  55000 | Infosys      |
+| 23 | Deepak   |  64000 | Wipro        |
+| 24 | Ritu     |  49000 | HCL          |
+| 25 | Varun    |  82000 | Google       |
+| 26 | Shalini  |  74000 | Amazon       |
+| 27 | Kunal    |  70000 | Microsoft    |
+| 28 | Ayesha   |  58000 | Accenture    |
+| 29 | Naveen   |  66000 | IBM          |
+| 30 | Tanvi    |  60000 | Deloitte     |
+| 31 | Amit     |  45000 | TCS          |
+| 32 | Riya     |  52000 | Infosys      |
+| 33 | Karan    |  60000 | Wipro        |
+| 34 | Sneha    |  48000 | HCL          |
+| 35 | Rahul    |  75000 | Google       |
+| 36 | Neha     |  70000 | Amazon       |
+| 37 | Vikram   |  68000 | Microsoft    |
+| 38 | Pooja    |  55000 | Accenture    |
+| 39 | Arjun    |  62000 | IBM          |
+| 40 | Ananya   |  58000 | Deloitte     |
++----+----------+--------+--------------+
+40 rows in set (0.00 sec)
+
+mysql> select * from employee limit 0, 5;
++----+----------+--------+--------------+
+| Id | Name     | Salary | Company_Name |
++----+----------+--------+--------------+
+|  1 | Shreeram |  45000 | Infosys      |
+|  2 | Ranvijay |  39000 | Zensar       |
+|  3 | Karan    |  60000 | Wipro        |
+|  4 | Sneha    |  48000 | HCL          |
+|  5 | Rahul    |  75000 | Google       |
++----+----------+--------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee limit 5, 5;
++----+--------+--------+--------------+
+| Id | Name   | Salary | Company_Name |
++----+--------+--------+--------------+
+|  6 | Neha   |  70000 | Amazon       |
+|  7 | Vikram |  68000 | Microsoft    |
+|  8 | Pooja  |  55000 | Accenture    |
+|  9 | Arjun  |  62000 | IBM          |
+| 10 | Ananya |  58000 | Deloitte     |
++----+--------+--------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee limit 10, 5;
++----+--------+--------+--------------+
+| Id | Name   | Salary | Company_Name |
++----+--------+--------+--------------+
+| 11 | Suresh |  50000 | TCS          |
+| 12 | Meena  |  54000 | Infosys      |
+| 13 | Rohit  |  61000 | Wipro        |
+| 14 | Kavya  |  47000 | HCL          |
+| 15 | Nikhil |  80000 | Google       |
++----+--------+--------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee limit 15, 5;
++----+-------+--------+--------------+
+| Id | Name  | Salary | Company_Name |
++----+-------+--------+--------------+
+| 16 | Priya |  72000 | Amazon       |
+| 17 | Manoj |  69000 | Microsoft    |
+| 18 | Divya |  56000 | Accenture    |
+| 19 | Sahil |  63000 | IBM          |
+| 20 | Isha  |  59000 | Deloitte     |
++----+-------+--------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee limit 20, 10;
++----+---------+--------+--------------+
+| Id | Name    | Salary | Company_Name |
++----+---------+--------+--------------+
+| 21 | Ajay    |  51000 | TCS          |
+| 22 | Bhavna  |  55000 | Infosys      |
+| 23 | Deepak  |  64000 | Wipro        |
+| 24 | Ritu    |  49000 | HCL          |
+| 25 | Varun   |  82000 | Google       |
+| 26 | Shalini |  74000 | Amazon       |
+| 27 | Kunal   |  70000 | Microsoft    |
+| 28 | Ayesha  |  58000 | Accenture    |
+| 29 | Naveen  |  66000 | IBM          |
+| 30 | Tanvi   |  60000 | Deloitte     |
++----+---------+--------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from employee limit 30, 10;
++----+--------+--------+--------------+
+| Id | Name   | Salary | Company_Name |
++----+--------+--------+--------------+
+| 31 | Amit   |  45000 | TCS          |
+| 32 | Riya   |  52000 | Infosys      |
+| 33 | Karan  |  60000 | Wipro        |
+| 34 | Sneha  |  48000 | HCL          |
+| 35 | Rahul  |  75000 | Google       |
+| 36 | Neha   |  70000 | Amazon       |
+| 37 | Vikram |  68000 | Microsoft    |
+| 38 | Pooja  |  55000 | Accenture    |
+| 39 | Arjun  |  62000 | IBM          |
+| 40 | Ananya |  58000 | Deloitte     |
++----+--------+--------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from employee limit 40, 10;
+Empty set (0.00 sec)
 
 mysql>
