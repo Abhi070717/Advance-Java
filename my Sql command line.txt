@@ -662,4 +662,351 @@ mysql> select * from employee limit 30, 10;
 mysql> select * from employee limit 40, 10;
 Empty set (0.00 sec)
 
+mysql> INSERT INTO Employee (Id, Name, Salary, Company_Name) VALUES (41,'Vikram',46500,'finosys');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from employee;
++----+----------+--------+--------------+
+| Id | Name     | Salary | Company_Name |
++----+----------+--------+--------------+
+|  1 | Shreeram |  45000 | Infosys      |
+|  2 | Ranvijay |  39000 | Zensar       |
+|  3 | Karan    |  60000 | Wipro        |
+|  4 | Sneha    |  48000 | HCL          |
+|  5 | Rahul    |  75000 | Google       |
+|  6 | Neha     |  70000 | Amazon       |
+|  7 | Vikram   |  68000 | Microsoft    |
+|  8 | Pooja    |  55000 | Accenture    |
+|  9 | Arjun    |  62000 | IBM          |
+| 10 | Ananya   |  58000 | Deloitte     |
+| 11 | Suresh   |  50000 | TCS          |
+| 12 | Meena    |  54000 | Infosys      |
+| 13 | Rohit    |  61000 | Wipro        |
+| 14 | Kavya    |  47000 | HCL          |
+| 15 | Nikhil   |  80000 | Google       |
+| 16 | Priya    |  72000 | Amazon       |
+| 17 | Manoj    |  69000 | Microsoft    |
+| 18 | Divya    |  56000 | Accenture    |
+| 19 | Sahil    |  63000 | IBM          |
+| 20 | Isha     |  59000 | Deloitte     |
+| 21 | Ajay     |  51000 | TCS          |
+| 22 | Bhavna   |  55000 | Infosys      |
+| 23 | Deepak   |  64000 | Wipro        |
+| 24 | Ritu     |  49000 | HCL          |
+| 25 | Varun    |  82000 | Google       |
+| 26 | Shalini  |  74000 | Amazon       |
+| 27 | Kunal    |  70000 | Microsoft    |
+| 28 | Ayesha   |  58000 | Accenture    |
+| 29 | Naveen   |  66000 | IBM          |
+| 30 | Tanvi    |  60000 | Deloitte     |
+| 31 | Amit     |  45000 | TCS          |
+| 32 | Riya     |  52000 | Infosys      |
+| 33 | Karan    |  60000 | Wipro        |
+| 34 | Sneha    |  48000 | HCL          |
+| 35 | Rahul    |  75000 | Google       |
+| 36 | Neha     |  70000 | Amazon       |
+| 37 | Vikram   |  68000 | Microsoft    |
+| 38 | Pooja    |  55000 | Accenture    |
+| 39 | Arjun    |  62000 | IBM          |
+| 40 | Ananya   |  58000 | Deloitte     |
+| 41 | Vikram   |  46500 | finosys      |
++----+----------+--------+--------------+
+41 rows in set (0.00 sec)
+
+mysql> delete from employee where id = 41;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++----+----------+--------+--------------+
+| Id | Name     | Salary | Company_Name |
++----+----------+--------+--------------+
+|  1 | Shreeram |  45000 | Infosys      |
+|  2 | Ranvijay |  39000 | Zensar       |
+|  3 | Karan    |  60000 | Wipro        |
+|  4 | Sneha    |  48000 | HCL          |
+|  5 | Rahul    |  75000 | Google       |
+|  6 | Neha     |  70000 | Amazon       |
+|  7 | Vikram   |  68000 | Microsoft    |
+|  8 | Pooja    |  55000 | Accenture    |
+|  9 | Arjun    |  62000 | IBM          |
+| 10 | Ananya   |  58000 | Deloitte     |
+| 11 | Suresh   |  50000 | TCS          |
+| 12 | Meena    |  54000 | Infosys      |
+| 13 | Rohit    |  61000 | Wipro        |
+| 14 | Kavya    |  47000 | HCL          |
+| 15 | Nikhil   |  80000 | Google       |
+| 16 | Priya    |  72000 | Amazon       |
+| 17 | Manoj    |  69000 | Microsoft    |
+| 18 | Divya    |  56000 | Accenture    |
+| 19 | Sahil    |  63000 | IBM          |
+| 20 | Isha     |  59000 | Deloitte     |
+| 21 | Ajay     |  51000 | TCS          |
+| 22 | Bhavna   |  55000 | Infosys      |
+| 23 | Deepak   |  64000 | Wipro        |
+| 24 | Ritu     |  49000 | HCL          |
+| 25 | Varun    |  82000 | Google       |
+| 26 | Shalini  |  74000 | Amazon       |
+| 27 | Kunal    |  70000 | Microsoft    |
+| 28 | Ayesha   |  58000 | Accenture    |
+| 29 | Naveen   |  66000 | IBM          |
+| 30 | Tanvi    |  60000 | Deloitte     |
+| 31 | Amit     |  45000 | TCS          |
+| 32 | Riya     |  52000 | Infosys      |
+| 33 | Karan    |  60000 | Wipro        |
+| 34 | Sneha    |  48000 | HCL          |
+| 35 | Rahul    |  75000 | Google       |
+| 36 | Neha     |  70000 | Amazon       |
+| 37 | Vikram   |  68000 | Microsoft    |
+| 38 | Pooja    |  55000 | Accenture    |
+| 39 | Arjun    |  62000 | IBM          |
+| 40 | Ananya   |  58000 | Deloitte     |
++----+----------+--------+--------------+
+40 rows in set (0.00 sec)
+
+mysql> alter table employee rename column name to Employee_Name;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++----+---------------+--------+--------------+
+| Id | Employee_Name | Salary | Company_Name |
++----+---------------+--------+--------------+
+|  1 | Shreeram      |  45000 | Infosys      |
+|  2 | Ranvijay      |  39000 | Zensar       |
+|  3 | Karan         |  60000 | Wipro        |
+|  4 | Sneha         |  48000 | HCL          |
+|  5 | Rahul         |  75000 | Google       |
+|  6 | Neha          |  70000 | Amazon       |
+|  7 | Vikram        |  68000 | Microsoft    |
+|  8 | Pooja         |  55000 | Accenture    |
+|  9 | Arjun         |  62000 | IBM          |
+| 10 | Ananya        |  58000 | Deloitte     |
+| 11 | Suresh        |  50000 | TCS          |
+| 12 | Meena         |  54000 | Infosys      |
+| 13 | Rohit         |  61000 | Wipro        |
+| 14 | Kavya         |  47000 | HCL          |
+| 15 | Nikhil        |  80000 | Google       |
+| 16 | Priya         |  72000 | Amazon       |
+| 17 | Manoj         |  69000 | Microsoft    |
+| 18 | Divya         |  56000 | Accenture    |
+| 19 | Sahil         |  63000 | IBM          |
+| 20 | Isha          |  59000 | Deloitte     |
+| 21 | Ajay          |  51000 | TCS          |
+| 22 | Bhavna        |  55000 | Infosys      |
+| 23 | Deepak        |  64000 | Wipro        |
+| 24 | Ritu          |  49000 | HCL          |
+| 25 | Varun         |  82000 | Google       |
+| 26 | Shalini       |  74000 | Amazon       |
+| 27 | Kunal         |  70000 | Microsoft    |
+| 28 | Ayesha        |  58000 | Accenture    |
+| 29 | Naveen        |  66000 | IBM          |
+| 30 | Tanvi         |  60000 | Deloitte     |
+| 31 | Amit          |  45000 | TCS          |
+| 32 | Riya          |  52000 | Infosys      |
+| 33 | Karan         |  60000 | Wipro        |
+| 34 | Sneha         |  48000 | HCL          |
+| 35 | Rahul         |  75000 | Google       |
+| 36 | Neha          |  70000 | Amazon       |
+| 37 | Vikram        |  68000 | Microsoft    |
+| 38 | Pooja         |  55000 | Accenture    |
+| 39 | Arjun         |  62000 | IBM          |
+| 40 | Ananya        |  58000 | Deloitte     |
++----+---------------+--------+--------------+
+40 rows in set (0.01 sec)
+
+mysql> select employee_name empName from employee;
++----------+
+| empName  |
++----------+
+| Shreeram |
+| Ranvijay |
+| Karan    |
+| Sneha    |
+| Rahul    |
+| Neha     |
+| Vikram   |
+| Pooja    |
+| Arjun    |
+| Ananya   |
+| Suresh   |
+| Meena    |
+| Rohit    |
+| Kavya    |
+| Nikhil   |
+| Priya    |
+| Manoj    |
+| Divya    |
+| Sahil    |
+| Isha     |
+| Ajay     |
+| Bhavna   |
+| Deepak   |
+| Ritu     |
+| Varun    |
+| Shalini  |
+| Kunal    |
+| Ayesha   |
+| Naveen   |
+| Tanvi    |
+| Amit     |
+| Riya     |
+| Karan    |
+| Sneha    |
+| Rahul    |
+| Neha     |
+| Vikram   |
+| Pooja    |
+| Arjun    |
+| Ananya   |
++----------+
+40 rows in set (0.00 sec)
+
+mysql>
+
+mysql> delete from employee where id in (39,40);
+Query OK, 2 rows affected (0.02 sec)
+
+mysql> select * from employee;
++----+---------------+--------+--------------+---------------+
+| Id | Employee_Name | Salary | Company_Name | Department_Id |
++----+---------------+--------+--------------+---------------+
+|  1 | Shreeram      |  45000 | Infosys      |             3 |
+|  2 | Ranvijay      |  39000 | Zensar       |             7 |
+|  3 | Karan         |  60000 | Wipro        |             2 |
+|  4 | Sneha         |  48000 | HCL          |          NULL |
+|  5 | Rahul         |  75000 | Google       |          NULL |
+|  6 | Neha          |  70000 | Amazon       |             8 |
+|  7 | Vikram        |  68000 | Microsoft    |          NULL |
+|  8 | Pooja         |  55000 | Accenture    |          NULL |
+|  9 | Arjun         |  62000 | IBM          |          NULL |
+| 10 | Ananya        |  58000 | Deloitte     |          NULL |
+| 11 | Suresh        |  50000 | TCS          |          NULL |
+| 12 | Meena         |  54000 | Infosys      |          NULL |
+| 13 | Rohit         |  61000 | Wipro        |          NULL |
+| 14 | Kavya         |  47000 | HCL          |          NULL |
+| 15 | Nikhil        |  80000 | Google       |          NULL |
+| 16 | Priya         |  72000 | Amazon       |          NULL |
+| 17 | Manoj         |  69000 | Microsoft    |          NULL |
+| 18 | Divya         |  56000 | Accenture    |          NULL |
+| 19 | Sahil         |  63000 | IBM          |          NULL |
+| 20 | Isha          |  59000 | Deloitte     |          NULL |
+| 21 | Ajay          |  51000 | TCS          |          NULL |
+| 22 | Bhavna        |  55000 | Infosys      |          NULL |
+| 23 | Deepak        |  64000 | Wipro        |          NULL |
+| 24 | Ritu          |  49000 | HCL          |          NULL |
+| 25 | Varun         |  82000 | Google       |          NULL |
+| 26 | Shalini       |  74000 | Amazon       |          NULL |
+| 27 | Kunal         |  70000 | Microsoft    |          NULL |
+| 28 | Ayesha        |  58000 | Accenture    |          NULL |
+| 29 | Naveen        |  66000 | IBM          |          NULL |
+| 30 | Tanvi         |  60000 | Deloitte     |          NULL |
+| 31 | Amit          |  45000 | TCS          |          NULL |
+| 32 | Riya          |  52000 | Infosys      |          NULL |
+| 33 | Karan         |  60000 | Wipro        |          NULL |
+| 34 | Sneha         |  48000 | HCL          |          NULL |
+| 35 | Rahul         |  75000 | Google       |          NULL |
+| 36 | Neha          |  70000 | Amazon       |          NULL |
+| 37 | Vikram        |  68000 | Microsoft    |          NULL |
+| 38 | Pooja         |  55000 | Accenture    |          NULL |
++----+---------------+--------+--------------+---------------+
+38 rows in set (0.00 sec)
+
+mysql> alter table employee rename column name to Employee_Name;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++----+---------------+--------+--------------+
+| Id | Employee_Name | Salary | Company_Name |
++----+---------------+--------+--------------+
+|  1 | Shreeram      |  45000 | Infosys      |
+|  2 | Ranvijay      |  39000 | Zensar       |
+|  3 | Karan         |  60000 | Wipro        |
+|  4 | Sneha         |  48000 | HCL          |
+|  5 | Rahul         |  75000 | Google       |
+|  6 | Neha          |  70000 | Amazon       |
+|  7 | Vikram        |  68000 | Microsoft    |
+|  8 | Pooja         |  55000 | Accenture    |
+|  9 | Arjun         |  62000 | IBM          |
+| 10 | Ananya        |  58000 | Deloitte     |
+| 11 | Suresh        |  50000 | TCS          |
+| 12 | Meena         |  54000 | Infosys      |
+| 13 | Rohit         |  61000 | Wipro        |
+| 14 | Kavya         |  47000 | HCL          |
+| 15 | Nikhil        |  80000 | Google       |
+| 16 | Priya         |  72000 | Amazon       |
+| 17 | Manoj         |  69000 | Microsoft    |
+| 18 | Divya         |  56000 | Accenture    |
+| 19 | Sahil         |  63000 | IBM          |
+| 20 | Isha          |  59000 | Deloitte     |
+| 21 | Ajay          |  51000 | TCS          |
+| 22 | Bhavna        |  55000 | Infosys      |
+| 23 | Deepak        |  64000 | Wipro        |
+| 24 | Ritu          |  49000 | HCL          |
+| 25 | Varun         |  82000 | Google       |
+| 26 | Shalini       |  74000 | Amazon       |
+| 27 | Kunal         |  70000 | Microsoft    |
+| 28 | Ayesha        |  58000 | Accenture    |
+| 29 | Naveen        |  66000 | IBM          |
+| 30 | Tanvi         |  60000 | Deloitte     |
+| 31 | Amit          |  45000 | TCS          |
+| 32 | Riya          |  52000 | Infosys      |
+| 33 | Karan         |  60000 | Wipro        |
+| 34 | Sneha         |  48000 | HCL          |
+| 35 | Rahul         |  75000 | Google       |
+| 36 | Neha          |  70000 | Amazon       |
+| 37 | Vikram        |  68000 | Microsoft    |
+| 38 | Pooja         |  55000 | Accenture    |
+| 39 | Arjun         |  62000 | IBM          |
+| 40 | Ananya        |  58000 | Deloitte     |
++----+---------------+--------+--------------+
+40 rows in set (0.01 sec)
+
+mysql> select employee_name empName from employee;
++----------+
+| empName  |
++----------+
+| Shreeram |
+| Ranvijay |
+| Karan    |
+| Sneha    |
+| Rahul    |
+| Neha     |
+| Vikram   |
+| Pooja    |
+| Arjun    |
+| Ananya   |
+| Suresh   |
+| Meena    |
+| Rohit    |
+| Kavya    |
+| Nikhil   |
+| Priya    |
+| Manoj    |
+| Divya    |
+| Sahil    |
+| Isha     |
+| Ajay     |
+| Bhavna   |
+| Deepak   |
+| Ritu     |
+| Varun    |
+| Shalini  |
+| Kunal    |
+| Ayesha   |
+| Naveen   |
+| Tanvi    |
+| Amit     |
+| Riya     |
+| Karan    |
+| Sneha    |
+| Rahul    |
+| Neha     |
+| Vikram   |
+| Pooja    |
+| Arjun    |
+| Ananya   |
++----------+
+40 rows in set (0.00 sec)
+
 mysql>
