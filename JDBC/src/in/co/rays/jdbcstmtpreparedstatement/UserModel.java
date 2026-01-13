@@ -1,0 +1,133 @@
+package in.co.rays.jdbcstmtpreparedstatement;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserModel {
+	
+	//Add Query in st_user
+	
+	public void add(UserBean bean) throws Exception {
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcproject", "root", "root");
+		
+		System.out.println("Java is connected with MYSQL Successfully");
+		
+		PreparedStatement pstmt = conn.prepareStatement("insert into st_user values(?, ?, ?, ?, ?, ?)");
+		
+		pstmt.setInt(1, bean.getId());
+		pstmt.setString(2, bean.getFirstName());
+		pstmt.setString(3, bean.getLastName());
+		pstmt.setString(4, bean.getLogin());
+		pstmt.setString(5, bean.getPassword());
+		pstmt.setDate(6, new java.sql.Date(bean.getDob().getTime()));
+		int i = pstmt.executeUpdate();
+		
+		System.out.println(i + " Query OK, The rows affected (0.02 sec)" + "\n"
+				+ "Records: Added  Duplicates: 0  Warnings: 0" + "\n" + "Data Inserted");
+		
+		conn.close();
+		pstmt.close();
+	}
+	
+	//Update Query in st_user
+	
+	public void update(UserBean bean) throws Exception {
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcproject", "root", "root");
+
+		PreparedStatement pstmt = conn.prepareStatement(
+				"update st_user set firstName = ?, lastName = ?, login = ?, password = ?, dob = ? where id = ?");
+
+		pstmt.setInt(6, bean.getId());
+		pstmt.setString(1, bean.getFirstName());
+		pstmt.setString(2, bean.getLastName());
+		pstmt.setString(3, bean.getLogin());
+		pstmt.setString(4, bean.getPassword());
+		pstmt.setDate(5, new java.sql.Date(bean.getDob().getTime()));
+		
+
+		int i = pstmt.executeUpdate();
+
+		System.out.println(i + " Query OK, The rows affected (0.02 sec)" + "\n"
+				+ "Records: Update  Duplicates: 0  Warnings: 0" + "\n" + "Data Updated");
+
+		conn.close();
+		pstmt.close();
+
+	}
+	//Delete Query Deleting in st_user
+	
+	public void delete(UserBean bean) throws Exception {
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcproject", "root", "root");
+
+		PreparedStatement pstmt = conn.prepareStatement("delete from st_user where id = ?");
+
+		pstmt.setInt(1, bean.getId());
+
+		int i = pstmt.executeUpdate();
+
+		System.out.println(i + " Query OK, The rows affected (0.02 sec)" + "\n"
+				+ "Records: Delete  Duplicates: 0  Warnings: 0" + "\n" + "Data Deleted");
+		
+		conn.close();
+		pstmt.close();
+
+	}
+	//Search Query Searching User Details
+	
+	public List search(UserBean bean) throws Exception {
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcproject", "root", "root");
+
+		StringBuffer sql = new StringBuffer("select * from st_user where 1=1");
+
+		if (bean != null) {
+			if (bean.getFirstName() != null && bean.getFirstName().length() > 0) {
+				sql.append(" and firstName like '" + bean.getFirstName() + "%'");
+			}
+			if (bean.getLastName() != null && bean.getLastName().length() > 0) {
+				sql.append(" and lastName like '" + bean.getLastName() + "%'");
+			}
+		}
+
+		System.out.println("sql Query " + sql.toString());
+		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+
+		ResultSet rs = pstmt.executeQuery();
+
+		List list = new ArrayList();
+
+		while (rs.next()) {
+			bean = new UserBean();
+			bean.setId(rs.getInt(1));
+			bean.setFirstName(rs.getString(2));
+			bean.setLastName(rs.getString(3));
+			bean.setLogin(rs.getString(4));
+			bean.setPassword(rs.getString(5));
+			bean.setDob(rs.getDate(6));
+			list.add(bean);
+		}
+
+		conn.close();
+		pstmt.close();
+		return list;
+
+	}
+
+
+}
+
