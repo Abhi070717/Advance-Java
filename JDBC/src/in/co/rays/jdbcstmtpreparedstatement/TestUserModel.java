@@ -8,15 +8,14 @@ public class TestUserModel {
 
 	public static void main(String[] args) throws Exception {
 
-		
 //		testAdd();
 //		testUpdate();
 //		testDelete();
 		testSearch();
 
 	}
-	//Add Query Adding New User Details
-	
+
+// Add Query Adding New User Details
 	public static void testAdd() throws Exception {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -32,8 +31,8 @@ public class TestUserModel {
 
 		model.add(bean);
 	}
-	//Update Query Updating Users Details
-
+	
+// Update Query Updating Users Details
 	public static void testUpdate() throws Exception {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -51,8 +50,8 @@ public class TestUserModel {
 		model.update(bean);
 
 	}
-	//Delete Query Adding New User Details
-
+	
+// Delete Query Adding New User Details
 	public static void testDelete() throws Exception {
 
 		UserModel model = new UserModel();
@@ -64,6 +63,7 @@ public class TestUserModel {
 
 	}
 
+//Search query search user details
 	public static void testSearch() throws Exception {
 
 		UserModel model = new UserModel();
@@ -84,11 +84,38 @@ public class TestUserModel {
 			System.out.println(bean.getLogin());
 			System.out.println(bean.getPassword());
 			System.out.println(bean.getDob());
-			
+
 			model.search(bean);
 		}
 
 	}
 
+//Search1 query search user details
+	public static void testSearch1() throws Exception {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		UserModel model = new UserModel();
+		UserBean bean = new UserBean();
+		
+		bean.setFirstName("Abhi");
+		
+//			bean.setId(3);
+//			bean.setFirstName("Sneha");
+//			bean.setLastName("Sahu");
+//			bean.setLogin("sneha@gmail.com");
+//			bean.setPassword("ssahu123");
+//			bean.setDob(sdf.parse("2002-10-07"));
+		
+		System.out.println(bean.getId());
+		System.out.println(bean.getFirstName());
+		System.out.println(bean.getLastName());
+		System.out.println(bean.getLogin());
+		System.out.println(bean.getPassword());
+		System.out.println(bean.getDob());
+
+			model.Search1(bean);
+			
+	}
 
 }

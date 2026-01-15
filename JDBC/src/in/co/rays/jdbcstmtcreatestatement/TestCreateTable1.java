@@ -18,7 +18,7 @@ public class TestCreateTable1 {
 		Statement stmt = conn.createStatement();
 
 		int i = stmt.executeUpdate(
-				"create table Student_Marksheet(Id int primary key, Name varchar(45), RollNo int, Physics int,  chemistry int , Maths int)");
+				"create table Student_Marksheet(Id int primary key, Name varchar(45), RollNo int, Physics int,  Chemistry int , Maths int)");
 
 		System.out.println(i + " Query OK, The rows affected (0.02 sec)" + "\n"
 				+ "Records: Table  Duplicates: 0  Warnings: 0" + "\n" + "Table Created");

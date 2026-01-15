@@ -4,23 +4,24 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserModel {
-	
-	//Add Query in st_user
-	
+
+// Add Query in st_user
 	public void add(UserBean bean) throws Exception {
-		
+
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		
+
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcproject", "root", "root");
-		
+
 		System.out.println("Java is connected with MYSQL Successfully");
-		
+
 		PreparedStatement pstmt = conn.prepareStatement("insert into st_user values(?, ?, ?, ?, ?, ?)");
-		
+
 		pstmt.setInt(1, bean.getId());
 		pstmt.setString(2, bean.getFirstName());
 		pstmt.setString(3, bean.getLastName());
@@ -28,16 +29,15 @@ public class UserModel {
 		pstmt.setString(5, bean.getPassword());
 		pstmt.setDate(6, new java.sql.Date(bean.getDob().getTime()));
 		int i = pstmt.executeUpdate();
-		
+
 		System.out.println(i + " Query OK, The rows affected (0.02 sec)" + "\n"
 				+ "Records: Added  Duplicates: 0  Warnings: 0" + "\n" + "Data Inserted");
-		
+
 		conn.close();
 		pstmt.close();
 	}
-	
-	//Update Query in st_user
-	
+
+// Update Query in st_user
 	public void update(UserBean bean) throws Exception {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -53,7 +53,6 @@ public class UserModel {
 		pstmt.setString(3, bean.getLogin());
 		pstmt.setString(4, bean.getPassword());
 		pstmt.setDate(5, new java.sql.Date(bean.getDob().getTime()));
-		
 
 		int i = pstmt.executeUpdate();
 
@@ -64,8 +63,8 @@ public class UserModel {
 		pstmt.close();
 
 	}
-	//Delete Query Deleting in st_user
-	
+
+// Delete Query Deleting in st_user
 	public void delete(UserBean bean) throws Exception {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -80,13 +79,17 @@ public class UserModel {
 
 		System.out.println(i + " Query OK, The rows affected (0.02 sec)" + "\n"
 				+ "Records: Delete  Duplicates: 0  Warnings: 0" + "\n" + "Data Deleted");
-		
+
 		conn.close();
 		pstmt.close();
 
 	}
-	//Search Query Searching User Details
+
 	
+	
+	
+////////////////////dfbhdgfgsertgrsthyr
+// Search Query Searching User Details
 	public List search(UserBean bean) throws Exception {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -122,12 +125,56 @@ public class UserModel {
 			list.add(bean);
 		}
 
+		System.out.println("Query OK, The rows affected (0.02 sec)" + "\n"
+				+ "Records: Search  Duplicates: 0  Warnings: 0" + "\n" + "Record Displayed");
+
 		conn.close();
 		pstmt.close();
 		return list;
 
 	}
 
+// Search query Formating table of user details
+	public void Search1(UserBean bean) throws Exception {
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcproject", "root", "root");
+
+		System.out.println("java is connected with mysql successfully....");
+
+		PreparedStatement pstmt = conn.prepareStatement("select * from st_user");
+		ResultSet rs = pstmt.executeQuery("select * from st_user");
+
+// Header
+		System.out.println("------------------------------------------------------------------------------------");
+		System.out.printf("| %-3s | %-10s | %-10s | %-20s | %-12s | %-10s |%n", "ID", "FirstName", "LastName", "Email",
+				"Password", "DOB");
+		System.out.println("------------------------------------------------------------------------------------");
+
+// Data
+		while (rs.next()) {
+			bean = new UserBean();
+			bean.setId(rs.getInt(1));
+			bean.setFirstName(rs.getString(2));
+			bean.setLastName(rs.getString(3));
+			bean.setLogin(rs.getString(4));
+			bean.setPassword(rs.getString(5));
+			bean.setDob(rs.getDate(6));
+
+			System.out.printf("| %-3d | %-10s | %-10s | %-20s | %-12s | %-10s |%n", rs.getInt(1), rs.getString(2),
+					rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6));
+		}
+
+// Footer line
+		System.out.println("------------------------------------------------------------------------------------");
+
+		System.out.println("Query OK, The rows affected (0.02 sec)" + "\n"
+				+ "Records: Search1  Duplicates: 0  Warnings: 0" + "\n" + "Record Displayed");
+
+		conn.close();
+		pstmt.close();
+
+	}
 
 }
-
