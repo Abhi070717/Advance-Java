@@ -13,9 +13,9 @@ public class TestUserModel {
 //		testDelete();
 //		testfindbylogin
 //		testfindbypk
-		testAuthenticate();
-//		testSearch();
-
+//		testAuthenticate();
+		testSearch();
+//		testSearch1();
 	}
 
 // Add Query Adding New User Details
@@ -65,7 +65,7 @@ public class TestUserModel {
 		model.delete(bean);
 
 	}
-	
+
 //Search Query using findbylogin in User Details
 	public static void testfindByLogin() throws Exception {
 
@@ -86,7 +86,7 @@ public class TestUserModel {
 		}
 
 	}
-	
+
 //Search Query using findbypk in User Details
 	public static void testfindByPk() throws Exception {
 
@@ -107,7 +107,7 @@ public class TestUserModel {
 		}
 
 	}
-	
+
 //Search Query using Authenticate in User Details
 	public static void testAuthenticate() throws Exception {
 
@@ -129,22 +129,21 @@ public class TestUserModel {
 
 	}
 
-
 //Search query search user details
 	public static void testSearch() throws Exception {
 
 		UserModel model = new UserModel();
 		UserBean bean = new UserBean();
 
-		bean.setFirstName("Ramesh");
-		// bean.setLastName("Sen");
+		bean.setFirstName("Abhi");
+		// bean.setLastName("Bhawsar");
 
 		List list = model.search(bean);
 
 		Iterator<UserBean> it = list.iterator();
 
-		while (it.hasNext()) {
-			bean = it.next();
+		while (it.hasNext()) {			//check the data is present or not
+			bean = it.next();			//itrate the element or remove 
 			System.out.println(bean.getId());
 			System.out.println(bean.getFirstName());
 			System.out.println(bean.getLastName());
@@ -152,27 +151,63 @@ public class TestUserModel {
 			System.out.println(bean.getPassword());
 			System.out.println(bean.getDob());
 
-			model.search(bean);
 		}
 
 	}
 
-//Search1 query search user details
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//testSearch1 query search user details
 	public static void testSearch1() throws Exception {
-
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 		UserModel model = new UserModel();
 		UserBean bean = new UserBean();
-
-		bean.setFirstName("Abhi");
-
-//			bean.setId(3);
-//			bean.setFirstName("Sneha");
-//			bean.setLastName("Sahu");
-//			bean.setLogin("sneha@gmail.com");
-//			bean.setPassword("ssahu123");
-//			bean.setDob(sdf.parse("2002-10-07"));
 
 		System.out.println(bean.getId());
 		System.out.println(bean.getFirstName());
@@ -180,6 +215,7 @@ public class TestUserModel {
 		System.out.println(bean.getLogin());
 		System.out.println(bean.getPassword());
 		System.out.println(bean.getDob());
+		System.out.println("------------");
 
 		model.Search1(bean);
 

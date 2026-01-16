@@ -4,38 +4,44 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+//import java.util.ResourceBundle;
 
 public class UserModel {
+
+//		ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.bundle.app");
+
+//		String Driver = rb.getString("driver");
+//		String Url = rb.getString("url");
+//		String Username = rb.getString("username");
+//		String Password = rb.getString("password");
 
 // Add Query in st_user
 	public void add(UserBean bean) throws Exception {
 
-		Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcproject", "root", "root");
 
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcproject", "root", "root");
+			System.out.println("Java is connected with MYSQL Successfully");
 
-		System.out.println("Java is connected with MYSQL Successfully");
+			PreparedStatement pstmt = conn.prepareStatement("insert into st_user values(?, ?, ?, ?, ?, ?)");
 
-		PreparedStatement pstmt = conn.prepareStatement("insert into st_user values(?, ?, ?, ?, ?, ?)");
+			pstmt.setInt(1, bean.getId());
+			pstmt.setString(2, bean.getFirstName());
+			pstmt.setString(3, bean.getLastName());
+			pstmt.setString(4, bean.getLogin());
+			pstmt.setString(5, bean.getPassword());
+			pstmt.setDate(6, new java.sql.Date(bean.getDob().getTime()));
+			int i = pstmt.executeUpdate();
 
-		pstmt.setInt(1, bean.getId());
-		pstmt.setString(2, bean.getFirstName());
-		pstmt.setString(3, bean.getLastName());
-		pstmt.setString(4, bean.getLogin());
-		pstmt.setString(5, bean.getPassword());
-		pstmt.setDate(6, new java.sql.Date(bean.getDob().getTime()));
-		int i = pstmt.executeUpdate();
+			System.out.println(i + " Query OK, The rows affected (0.02 sec)" + "\n"
+					+ "Records: Added  Duplicates: 0  Warnings: 0" + "\n" + "Data Inserted");
 
-		System.out.println(i + " Query OK, The rows affected (0.02 sec)" + "\n"
-				+ "Records: Added  Duplicates: 0  Warnings: 0" + "\n" + "Data Inserted");
-
-		conn.close();
-		pstmt.close();
-	}
+			conn.close();
+			pstmt.close();
+		}
 
 // Update Query in st_user
 	public void update(UserBean bean) throws Exception {
@@ -146,7 +152,7 @@ public class UserModel {
 		pstmt.close();
 		return bean;
 	}
-	
+
 //Search Query Authenticate in st_user
 	public UserBean authenticate(String login, String password) throws Exception {
 
@@ -180,7 +186,6 @@ public class UserModel {
 
 	}
 
-////////////////////dfbhdgfgsertgrsthyr
 // Search Query Searching User Details
 	public List search(UserBean bean) throws Exception {
 
@@ -226,8 +231,10 @@ public class UserModel {
 
 	}
 
-// Search query Formating table of user details
-	public void Search1(UserBean bean) throws Exception {
+
+		
+	// Search query Formating table of user details
+	public List Search1(UserBean bean) throws Exception {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -236,14 +243,9 @@ public class UserModel {
 		System.out.println("java is connected with mysql successfully....");
 
 		PreparedStatement pstmt = conn.prepareStatement("select * from st_user");
-		ResultSet rs = pstmt.executeQuery("select * from st_user");
+		ResultSet rs = pstmt.executeQuery();
 
-// Header
-		System.out.println("------------------------------------------------------------------------------------");
-		System.out.printf("| %-3s | %-10s | %-10s | %-20s | %-12s | %-10s |%n", "ID", "FirstName", "LastName", "Email",
-				"Password", "DOB");
-		System.out.println("------------------------------------------------------------------------------------");
-
+		List list = new ArrayList();
 // Data
 		while (rs.next()) {
 			bean = new UserBean();
@@ -253,20 +255,29 @@ public class UserModel {
 			bean.setLogin(rs.getString(4));
 			bean.setPassword(rs.getString(5));
 			bean.setDob(rs.getDate(6));
+			list.add(bean);
 
-			System.out.printf("| %-3d | %-10s | %-10s | %-20s | %-12s | %-10s |%n", rs.getInt(1), rs.getString(2),
-					rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6));
-		}
+			// Header
+			System.out.println("------------------------------------------------------------------------------------");
+			System.out.printf("| %-3s | %-10s | %-10s | %-20s | %-12s | %-10s |%n", "ID", "FirstName", "LastName",
+					"Email", "Password", "DOB");
+			System.out.println("------------------------------------------------------------------------------------");
+
+			while (rs.next()) {
+				System.out.printf("| %-3d | %-10s | %-10s | %-20s | %-12s | %-10s |%n", rs.getInt(1), rs.getString(2),
+						rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6));
+			}
 
 // Footer line
-		System.out.println("------------------------------------------------------------------------------------");
+			System.out.println("------------------------------------------------------------------------------------");
 
-		System.out.println("Query OK, The rows affected (0.02 sec)" + "\n"
-				+ "Records: Search1  Duplicates: 0  Warnings: 0" + "\n" + "Record Displayed");
+			System.out.println("Query OK, The rows affected (0.02 sec)" + "\n"
+					+ "Records: Search1  Duplicates: 0  Warnings: 0" + "\n" + "Record Displayed");
 
+		}
 		conn.close();
 		pstmt.close();
+		return list;
 
 	}
-
 }

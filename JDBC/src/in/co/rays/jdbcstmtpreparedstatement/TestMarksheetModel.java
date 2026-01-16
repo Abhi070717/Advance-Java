@@ -1,6 +1,7 @@
 package in.co.rays.jdbcstmtpreparedstatement;
 
-import java.text.SimpleDateFormat;
+import java.util.Iterator;
+import java.util.List;
 
 public class TestMarksheetModel {
 
@@ -8,7 +9,10 @@ public class TestMarksheetModel {
 
 //		testAdd();
 //		testUpdate();
-		testDelete();
+//		testDelete();
+//		testfindByRollNo();
+//		testfindByPk();
+		testSearch();
 
 	}
 
@@ -57,4 +61,70 @@ public class TestMarksheetModel {
 
 	}
 
+//Search Query using findbylogin in Marksheet Details
+	public static void testfindByRollNo() throws Exception {
+
+		MarksheetModel model = new MarksheetModel();
+		MarksheetBean bean = new MarksheetBean();
+
+		bean = model.findByRollNo(104);
+
+		if (bean == null) {
+			System.out.println("Student not found");
+		} else {
+			System.out.println(bean.getId());
+			System.out.println(bean.getName());
+			System.out.println(bean.getRollNo());
+			System.out.println(bean.getPhysics());
+			System.out.println(bean.getChemistry());
+			System.out.println(bean.getMaths());
+		}
+
+	}
+
+//Search Query using findbypk in Marksheet Details
+	public static void testfindByPk() throws Exception {
+
+		MarksheetModel model = new MarksheetModel();
+		MarksheetBean bean = new MarksheetBean();
+
+		bean = model.findByPk(4);
+
+		if (bean == null) {
+			System.out.println("Student not found");
+		} else {
+			System.out.println(bean.getId());
+			System.out.println(bean.getName());
+			System.out.println(bean.getRollNo());
+			System.out.println(bean.getPhysics());
+			System.out.println(bean.getChemistry());
+			System.out.println(bean.getMaths());
+		}
+
+	}
+
+//Search query search Marksheet details
+	public static void testSearch() throws Exception {
+
+		MarksheetModel model = new MarksheetModel();
+		MarksheetBean bean = new MarksheetBean();
+
+		bean.setName("Anita Verma");
+
+		List list = model.search(bean);
+
+		Iterator<MarksheetBean> it = list.iterator();
+
+		while (it.hasNext()) { 						// check the data is present or not
+			bean = it.next(); 						// itrate the element or remove
+			System.out.println(bean.getId());
+			System.out.println(bean.getName());
+			System.out.println(bean.getRollNo());
+			System.out.println(bean.getPhysics());
+			System.out.println(bean.getChemistry());
+			System.out.println(bean.getMaths());
+
+		}
+
+	}
 }
