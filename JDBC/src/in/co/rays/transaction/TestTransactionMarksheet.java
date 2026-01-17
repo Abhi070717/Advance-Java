@@ -1,0 +1,50 @@
+package in.co.rays.transaction;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ResourceBundle;
+
+public class TestTransactionMarksheet {
+
+
+		public static void main(String[] args) throws SQLException {
+
+			ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.bundle.app");
+
+			String driver = rb.getString("driver");
+			String url = rb.getString("url");
+			String username = rb.getString("username");
+			String password = rb.getString("password");
+
+			Connection conn = null;
+
+			try {
+				Class.forName(driver);
+
+				conn = DriverManager.getConnection(url, username, password);
+
+//				conn.setAutoCommit(false);
+
+				Statement stmt = conn.createStatement();
+
+				int i = stmt.executeUpdate(
+						"insert into student_marksheet values(6,'Pooja Gupta', 106, 35, 40, 45)");
+
+				i = stmt.executeUpdate(
+						"insert into student_marksheet values(7,'Puna 107, 89, 48, 59)");		//syntex error in login "Punam Sharma',"
+
+				i = stmt.executeUpdate(
+						"insert into student_marksheet values(6,'Rishab Soni', 108, 67, 78, 79)");
+
+				conn.commit();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				conn.rollback();
+			}
+
+		}
+
+}

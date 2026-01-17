@@ -1,0 +1,41 @@
+package in.co.rays.jdbccollablestatemt;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.util.ResourceBundle;
+
+
+public class TestCallableStatementForUser {
+	public static void main(String[] args) throws Exception {
+		
+		ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.bundle.app");
+		
+		String driver = rb.getString("driver");
+		String url = rb.getString("url");
+		String u = rb.getString("username");
+		String password = rb.getString("password");
+		
+		Class.forName(driver);
+		
+		Connection conn = DriverManager.getConnection(url, u, password);
+		
+		CallableStatement cstmt = conn.prepareCall("{CALL SearchByIdUser()}");
+		
+		ResultSet rs = cstmt.executeQuery();
+
+		while (rs.next()) {
+			System.out.println(rs.getInt(1));
+			System.out.println(rs.getString(2));
+			System.out.println(rs.getString(3));
+			System.out.println(rs.getString(4));
+			System.out.println(rs.getString(5));
+			System.out.println(rs.getDate(6));
+		
+	}
+		conn.close();
+		cstmt.close();
+	
+	}
+}
