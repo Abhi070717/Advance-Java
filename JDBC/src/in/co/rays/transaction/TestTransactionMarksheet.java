@@ -39,6 +39,10 @@ public class TestTransactionMarksheet {
 						"insert into student_marksheet values(6,'Rishab Soni', 108, 67, 78, 79)");
 
 				conn.commit();
+				System.out.println("Transtion completed : Record Stored");
+				
+				conn.close();
+				stmt.close();
 
 			} catch (Exception e) {
 				e.printStackTrace();

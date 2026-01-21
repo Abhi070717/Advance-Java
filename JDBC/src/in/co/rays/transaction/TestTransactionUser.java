@@ -38,6 +38,10 @@ public class TestTransactionUser {
 					"insert into st_user values(12, 'Shriyan', 'salan', 'salan@gmail.com', 'shriyan123', '2000-21')");		////syntex error in Dob "2000-05-21"
 
 			conn.commit();
+			System.out.println("Transtion completed : Record Stored");
+			
+			conn.close();
+			stmt.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();

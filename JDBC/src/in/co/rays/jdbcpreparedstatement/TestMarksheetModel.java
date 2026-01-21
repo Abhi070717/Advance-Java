@@ -10,9 +10,9 @@ public class TestMarksheetModel {
 //		testAdd();
 //		testUpdate();
 //		testDelete();
-//		testfindByRollNo();
+		testfindByRollNo();
 //		testfindByPk();
-		testSearch();
+//		testSearch();
 
 	}
 
@@ -61,13 +61,13 @@ public class TestMarksheetModel {
 
 	}
 
-//Search Query using findbylogin in Marksheet Details
+//Search Query using findbyRollNo in Marksheet Details
 	public static void testfindByRollNo() throws Exception {
 
 		MarksheetModel model = new MarksheetModel();
 		MarksheetBean bean = new MarksheetBean();
 
-		bean = model.findByRollNo(104);
+		bean = model.findByRollNo(110);
 
 		if (bean == null) {
 			System.out.println("Student not found");
