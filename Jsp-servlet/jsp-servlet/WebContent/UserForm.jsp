@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Student Form</title>   
+<title>Student Form</title>
 </head>
 <body>
 
 	<div align="center">
 
-		<form>
+		<form action="HelloServlet" method="post">
 			<h1>Student Detail Form</h1>
 			<table>
 				<tr>
@@ -39,8 +39,9 @@
 						placeholder="Enter Your Password"></td>
 				</tr>
 				<tr>
-				<th></th>  
-					<td><input type="Submit" name="operation" value="SignUp"> &nbsp;&nbsp; <input type="Submit" name="operation" value="SignIn"></td>
+					<th></th>
+					<td><input type="Submit" name="operation" value="SignUp">
+						&nbsp;&nbsp; <input type="Submit" name="operation" value="SignIn"></td>
 					<td></td>
 				</tr>
 			</table>
