@@ -10,7 +10,7 @@ public class TestUserModel {
 
 //		testAdd();
 //		testUpdate();
-		testDelete();
+//		testDelete();
 //		testfindbylogin
 //		testfindbypk
 //		testAuthenticate();

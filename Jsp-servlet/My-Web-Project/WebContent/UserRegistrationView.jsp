@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +7,9 @@
 <title>Student Form</title>
 </head>
 <body>
-
 	<div align="center">
 
-		<form action="HelloServlet" method="post">
+		<form action="UserRegistrationctl" method="post">
 			<h1>Student Detail Form</h1>
 			<table>
 				<tr>
@@ -40,7 +39,7 @@
 				</tr>
 				<tr>
 					<th></th>
-					<td><input type="Submit" name="operation" value="Save"></td>
+					<td><input type="Submit" name="operation" value="SignUp"></td>
 					<td></td>
 				</tr>
 			</table>
@@ -48,6 +47,5 @@
 		</form>
 
 	</div>
-
 </body>
 </html>
