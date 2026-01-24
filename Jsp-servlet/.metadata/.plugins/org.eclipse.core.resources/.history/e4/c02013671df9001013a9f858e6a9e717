@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div align="Center">
+		<form action="MarksheetDetailsCtl" method="post">
+			<h1>Marksheet Detail</h1>
+			<table>
+				<tr>
+					<th>Name</th>
+					<td><input type="text" name="Name" value=""
+						placeholder="Enter Name"></td>
+				</tr>
+				<tr>
+					<th>Roll Number</th>
+					<td><input type="Number" name="RollNo" value=""
+						placeholder="Enter Roll Number"></td>
+				</tr>
+				<tr>
+					<th>Physics</th>
+					<td><input type="Number" name="Physics" value=""
+						placeholder="Numbers"></td>
+				</tr>
+				<tr>
+					<th>Chemistry</th>
+					<td><input type="Number" name="Chemistry" value=""
+						placeholder="Numbers"></td>
+				</tr>
+				<tr>
+					<th>Mathematics</th>
+					<td><input type="Number" name="Maths" value=""
+						placeholder="Numbers"></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><input type="Submit" name="operation" value="Save"></td>
+					<td></td>
+				</tr>
+			</table>
+		</form>
+
+	</div>
+</body>
+</html>

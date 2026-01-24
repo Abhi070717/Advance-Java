@@ -1,0 +1,49 @@
+package in.co.rays.transaction;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ResourceBundle;
+
+public class TestTransaction {
+
+	public static void main(String[] args) throws SQLException {
+
+		ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.bundle.app");
+
+		String driver = rb.getString("driver");
+		String url = rb.getString("url");
+		String username = rb.getString("username");
+		String password = rb.getString("password");
+
+		Connection conn = null;
+
+		try {
+			Class.forName(driver);
+
+			conn = DriverManager.getConnection(url, username, password);
+
+			conn.setAutoCommit(false);
+
+			Statement stmt = conn.createStatement();
+
+			int i = stmt.executeUpdate(
+					"insert into st_user values(10, 'Suresh', 'Yadav', 'suresh@gmail.com', 'suresh123', '2001-01-01')");
+
+			i = stmt.executeUpdate(
+					"insert into st_user values(11, 'Suresh', 'Yada, 'suresh@gmail.com', 'suresh123', '2001-01-01')");
+
+			i = stmt.executeUpdate(
+					"insert into st_user values(12, 'Suresh', 'Yadav', 'suresh@gmail.com', 'suresh123', 01-01-01')");
+
+			conn.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			conn.rollback();
+		}
+
+	}
+
+}

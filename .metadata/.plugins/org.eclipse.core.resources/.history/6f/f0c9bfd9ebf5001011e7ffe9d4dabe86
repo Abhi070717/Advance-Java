@@ -1,0 +1,130 @@
+package in.co.rays.jdbcpreparedstatement;
+
+import java.util.Iterator;
+import java.util.List;
+
+public class TestMarksheetModel {
+
+	public static void main(String[] args) throws Exception {
+
+//		testAdd();
+//		testUpdate();
+//		testDelete();
+//		testfindByRollNo();
+//		testfindByPk();
+		testSearch();
+
+	}
+
+// Add Query Adding New Student_Marksheet Details
+	public static void testAdd() throws Exception {
+
+		MarksheetModel model = new MarksheetModel();
+		MarksheetBean bean = new MarksheetBean();
+
+		bean.setId(5);
+		bean.setName("Ramesh Sen");
+		bean.setRollNo(105);
+		bean.setPhysics(78);
+		bean.setChemistry(98);
+		bean.setMaths(75);
+
+		model.add(bean);
+	}
+
+// Update Query Updating Users Details
+	public static void testUpdate() throws Exception {
+
+		MarksheetModel model = new MarksheetModel();
+		MarksheetBean bean = new MarksheetBean();
+
+		bean.setId(5);
+		bean.setName("Ramesh Sen");
+		bean.setRollNo(105);
+		bean.setPhysics(78);
+		bean.setChemistry(98);
+		bean.setMaths(75);
+
+		model.Update(bean);
+
+	}
+
+// Delete Query Adding New User Details
+	public static void testDelete() throws Exception {
+
+		MarksheetModel model = new MarksheetModel();
+		MarksheetBean bean = new MarksheetBean();
+
+		bean.setId(5);
+
+		model.delete(bean);
+
+	}
+
+//Search Query using findbyRollNo in Marksheet Details
+	public static void testfindByRollNo() throws Exception {
+
+		MarksheetModel model = new MarksheetModel();
+		MarksheetBean bean = new MarksheetBean();
+
+		bean = model.findByRollNo(110);
+
+		if (bean == null) {
+			System.out.println("Student not found");
+		} else {
+			System.out.println(bean.getId());
+			System.out.println(bean.getName());
+			System.out.println(bean.getRollNo());
+			System.out.println(bean.getPhysics());
+			System.out.println(bean.getChemistry());
+			System.out.println(bean.getMaths());
+		}
+
+	}
+
+//Search Query using findbypk in Marksheet Details
+	public static void testfindByPk() throws Exception {
+
+		MarksheetModel model = new MarksheetModel();
+		MarksheetBean bean = new MarksheetBean();
+
+		bean = model.findByPk(4);
+
+		if (bean == null) {
+			System.out.println("Student not found");
+		} else {
+			System.out.println(bean.getId());
+			System.out.println(bean.getName());
+			System.out.println(bean.getRollNo());
+			System.out.println(bean.getPhysics());
+			System.out.println(bean.getChemistry());
+			System.out.println(bean.getMaths());
+		}
+
+	}
+
+//Search query search Marksheet details
+	public static void testSearch() throws Exception {
+
+		MarksheetModel model = new MarksheetModel();
+		MarksheetBean bean = new MarksheetBean();
+
+		bean.setName("Anita Verma");
+
+		List list = model.search(bean);
+
+		Iterator<MarksheetBean> it = list.iterator();
+
+		while (it.hasNext()) { 						// check the data is present or not
+			bean = it.next(); 						// itrate the element or remove
+			System.out.println(bean.getId());
+			System.out.println(bean.getName());
+			System.out.println(bean.getRollNo());
+			System.out.println(bean.getPhysics());
+			System.out.println(bean.getChemistry());
+			System.out.println(bean.getMaths());
+
+		}
+
+	}
+}

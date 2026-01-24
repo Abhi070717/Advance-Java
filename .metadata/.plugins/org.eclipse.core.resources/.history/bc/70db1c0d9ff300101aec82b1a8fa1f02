@@ -1,0 +1,29 @@
+package in.co.rays.transaction;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.ResourceBundle;
+
+public class TestTransaction {
+
+	public static void main(String[] args) {
+
+		ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.bundle.app");
+
+		String driver = rb.getString("driver");
+		String url = rb.getString("url");
+		String u = rb.getString("username");
+		String password = rb.getString("password");
+		
+		Connection conn = null;
+		
+		Class.forName(driver);
+		conn = DriverManager.getConnection(url, username, password);
+		
+		conn.setAutoCommit(false);
+		
+		Statement stmt = conn.createStatement();
+	}
+
+}

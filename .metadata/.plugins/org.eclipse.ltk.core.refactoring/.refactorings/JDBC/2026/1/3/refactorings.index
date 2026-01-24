@@ -1,0 +1,19 @@
+1768255357888	Rename package 'in.co.rays.jdbc'
+1768459584510	Rename type 'Marksheet'
+1768460201385	Rename type 'TestSearch'
+1768460226276	Rename type 'TestSearch1'
+1768559525630	Delete element
+1768559550342	Delete element
+1768559707415	Delete element
+1768559915465	Move file
+1768559925828	Delete element
+1768560339560	Delete element
+1768560424265	Delete element
+1768566948565	Delete element
+1768567699979	Rename resource 'app_meng.properties'
+1768638362843	Rename package 'in.co.rays.jdbcstmtcreatestatement'
+1768638376205	Rename package 'in.co.rays.jdbcstmtpreparedstatement'
+1768643260610	Rename type 'TestCollableStatement'
+1768646711442	Rename type 'Transaction'
+1768655526419	Rename type 'TestCallableStatement'
+1768656359105	Rename type 'TestTransaction'
