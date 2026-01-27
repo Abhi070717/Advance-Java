@@ -1,4 +1,4 @@
-package com.rays.ctl;
+package in.co.rays.ctl;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.rays.bean.UserBean;
-import com.rays.model.UserModel;
+import in.co.rays.bean.UserBean;
+import in.co.rays.model.UserModel;
 
 @WebServlet("/UserListCtl.do")
 public class UserListCtl extends HttpServlet {

@@ -1,6 +1,7 @@
-package com.rays.ctl;
+package in.co.rays.ctl;
 
 import java.io.IOException;
+
 import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
@@ -10,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.rays.bean.UserBean;
-import com.rays.model.UserModel;
+import in.co.rays.bean.UserBean;
+
+import in.co.rays.model.UserModel;
 
 @WebServlet("/UserCtl.do")
 public class UserCtl extends HttpServlet {
@@ -49,16 +51,16 @@ public class UserCtl extends HttpServlet {
 
 		String fname = request.getParameter("firstName");
 		String lname = request.getParameter("lastName");
+		String DOB = request.getParameter("DOB");
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
-		String dob = request.getParameter("dob");
 
 		try {
 			bean.setFirstName(fname);
 			bean.setLastName(lname);
 			bean.setLogin(login);
 			bean.setPassword(password);
-			bean.setDob(sdf.parse(dob));
+			bean.setDob(sdf.parse(DOB));
 
 			if (op.equals("update")) {
 				bean.setId(Integer.parseInt(request.getParameter("id")));

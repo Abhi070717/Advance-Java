@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>User</title>
 </head>
 <body>
 	<%@ include file="Header.jsp"%>
 	<%
 	UserBean bean = (UserBean) request.getAttribute("bean");
 	%>
-	<%-- <jsp:useBean id="bean" class="com.rays.bean.UserBean" scope="request"></jsp:useBean> --%>
+	<%-- <jsp:useBean id="bean" class="in.co.rays.bean.UserBean" scope="request"></jsp:useBean> --%>
 	<div align="center">
 		<%
 		String smsg = (String) request.getAttribute("successMsg");
@@ -36,33 +36,33 @@
 				<input type="hidden" name="id"
 					value="<%=bean != null ? bean.getId() : ""%>">
 				<tr>
-					<th>First Name:</th>
+					<th>First Name</th>
 					<td><input type="text" name="firstName"
 						value="<%=bean != null ? bean.getFirstName() : ""%>"
 						placeholder="enter firstName"></td>
 				</tr>
 				<tr>
-					<th>Last Name:</th>
+					<th>Last Name</th>
 					<td><input type="text" name="lastName"
 						value="<%=bean != null ? bean.getLastName() : ""%>"
 						placeholder="enter lastName"></td>
 				</tr>
 				<tr>
-					<th>Login:</th>
+					<th>DAte Of Birth</th>
+					<td><input type="date" name="dob"
+						value="<%=bean != null ? bean.getDob() : ""%>"></td>
+				</tr>
+				<tr>
+					<th>Login</th>
 					<td><input type="email" name="login"
 						value="<%=bean != null ? bean.getLogin() : ""%>"
 						placeholder="enter your login"></td>
 				</tr>
 				<tr>
-					<th>Password:</th>
+					<th>Password</th>
 					<td><input type="password" name="password"
 						value="<%=bean != null ? bean.getPassword() : ""%>"
 						placeholder="enter your password"></td>
-				</tr>
-				<tr>
-					<th>Dob:</th>
-					<td><input type="date" name="dob"
-						value="<%=bean != null ? bean.getDob() : ""%>"></td>
 				</tr>
 				<tr>
 					<th></th>

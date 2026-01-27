@@ -1,4 +1,4 @@
-package com.rays.ctl;
+package in.co.rays.ctl;
 
 import java.io.IOException;
 
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 public class WelcomeCtl extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.sendRedirect("Welcome.jsp");
+	protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+		response.sendRedirect("WelcomeView.jsp");
 	}
 
 }
