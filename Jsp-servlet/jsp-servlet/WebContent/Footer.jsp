@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Footer</title>
+<title>Bottom Of the Page</title>
 <style type="text/css">
-#Footer {
-	position: Fixed;
+#footer {
+	position: fixed;
+	left: 0;
 	width: 100%;
 	bottom: 0;
 	text-align: center;
@@ -15,13 +16,11 @@
 </style>
 </head>
 <body>
-	<div id="Footer">
-		<Center>
-			<hr>
-			<h3>All rights reserved by Rays Technologies, SunilOS Infotech
-				Pvt Ltd Copyright © 2026</h3>
-		</Center>
-
+	<div id="footer">
+		<hr>
+		<H3>All rights reserved by Rays Technologies, SunilOS Infotech
+			Pvt Ltd Copyright © 2026</H3>
 	</div>
+
 </body>
 </html>

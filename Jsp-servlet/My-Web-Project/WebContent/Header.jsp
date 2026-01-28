@@ -5,31 +5,30 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Top of the page</title>
+<title>Header</title>
 </head>
 <body>
 
 	<%
-	UserBean userBean = (UserBean) session.getAttribute("user");
+	UserBean ub = (UserBean) session.getAttribute("user");
 	%>
-
 	<%
-	if (userBean != null) {
+	if (ub != null) {
 	%>
-	<h3><%="Hii, " + userBean.getFirstName()%></h3>
-	<a href="LoginCtl?operation=logout">Logout</a> |
-	<a href="UserCtl.do">Add User</a> |
-	<a href="UserListCtl.do">User List</a>
+	<h2><%="Hii, " + ub.getFirstName()%></h2>
+	<a href="LoginCtl?operation=logout">Logout</a> &nbsp
+	<a href="#">User List</a> &nbsp
+	<a href="#">Add User</a>
 	<%
 	} else {
 	%>
-	<h3>Hii, Guest</h3>
-	<a href="LoginCtl">Login</a> |
-	<a href="WelcomeCtl">Welcome</a>
+	<h2>Hii, Guest</h2>
+	<a href="LoginCtl">Login</a> &nbsp
+	<a href="WelcomeCtl">Welcome</a> &nbsp
+	<a href="UserRegistrationctl">User Registration</a>
 	<%
-	}
-	%>
-
+ }
+ %>
 	<hr>
 </body>
 </html>

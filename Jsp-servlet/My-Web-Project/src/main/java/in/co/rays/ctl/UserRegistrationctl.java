@@ -3,6 +3,7 @@ package in.co.rays.ctl;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,7 @@ import in.co.rays.bean.UserBean;
 import in.co.rays.model.UserModel;
 
 @WebServlet("/UserRegistrationctl") // wild Card mapping of webservlet
-public class UserRegistrationctl extends HttpServlet {
+public class UserRegistrationCtl extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,10 +44,12 @@ public class UserRegistrationctl extends HttpServlet {
 			bean.setPassword(password);
 
 			model.add(bean);
-			response.sendRedirect("UserRegistrationView.jsp");
+			request.setAttribute("msg", "User Registration Successful");
 
 		} catch (Exception e) {
 		}
+		RequestDispatcher rd = request.getRequestDispatcher("UserRegistrationView.jsp");
+		rd.forward(request, response);
 	}
 
 }

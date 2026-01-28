@@ -1,4 +1,4 @@
-package in.co.rays.model;
+package in.co.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import in.co.rays.bean.UserBean;
+import in.co.bean.UserBean;
 
 public class UserModel {
 	ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.bundle.app");
@@ -37,7 +37,7 @@ public class UserModel {
 		pstmt.close();
 		conn.close();
 
-  		return pk + 1;
+		return pk + 1;
 	}
 
 //Add Query in st_user

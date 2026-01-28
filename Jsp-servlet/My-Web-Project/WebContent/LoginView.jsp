@@ -4,56 +4,48 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Page</title>
 </head>
 <body>
-	<%
-	String smsg = (String) request.getAttribute("successMsg");
-	String errorMsg = (String) request.getAttribute("errorMsg");
-	%>
 	<%@ include file="Header.jsp"%>
-	<div align="center">
-		<h1>Login</h1>
-
-		<%
-		if (smsg != null) {
-		%>
-		<h3 style="color: green"><%=smsg%></h3>
-		<%
-		}
-		%>
-
-		<%
-		if (errorMsg != null) {
-		%>
-		<h3 style="color: red"><%=errorMsg%></h3>
-		<%
-		}
-		%>
+	<%
+	String errormsg = (String) request.getAttribute("errormsg");
+	%>
+	<div align="Center">
 
 		<form action="LoginCtl" method="post">
+			<h1>Login Form</h1>
+
+			<%
+			if (errormsg != null) {
+			%>
+			<h3 style="color: red">
+				<%=errormsg%>
+			</h3>
+
+			<%
+			}
+			%>
 
 			<table>
 				<tr>
-					<th>Login:</th>
+					<th>Login</th>
 					<td><input type="email" name="login" value=""
-						placeholder="enter your login"></td>
+						placeholder="Enter your Email"></td>
 				</tr>
 				<tr>
-					<th>Password:</th>
-					<td><input type="password" name="password" value=""
-						placeholder="enter your password"></td>
+					<th>Password</th>
+					<td><input type="password" name="password" name="password"
+						placeholder="Enter Your Password"></td>
 				</tr>
 				<tr>
 					<th></th>
-					<td><input type="submit" name="operation" value="signIn">
-						<input type="submit" name="operation" value="signUp"></td>
+					<td><input type="Submit" name="operation" value="SignIn"></td>
+					<td></td>
 				</tr>
-
 			</table>
 
 		</form>
-
 	</div>
 	<%@ include file="Footer.jsp"%>
 </body>

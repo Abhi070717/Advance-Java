@@ -1,4 +1,4 @@
-package in.co.rays.ctl;
+package in.co.ctl;
 
 import java.io.IOException;
 
@@ -9,14 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/WelcomeCtl")
-public class WelcomeCtl extends HttpServlet{
-	
+public class WelcomeCtl extends HttpServlet {
+
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("WelcomeView.jsp");
-	}
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
 }

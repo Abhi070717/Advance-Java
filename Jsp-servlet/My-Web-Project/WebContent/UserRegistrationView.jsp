@@ -1,16 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Student Form</title>
+<title>User Form</title>
 </head>
 <body>
+	<%@ include file="Header.jsp"%>
 	<div align="center">
+	<%
+	String msg = (String) request.getAttribute("msg");
+	%>
 
 		<form action="UserRegistrationctl" method="post">
-			<h1>Student Detail Form</h1>
+			<h1>User Detail Form</h1>
+			
+			<%
+			if(msg != null){
+			%>
+			<h3 style="color: green"><%= msg %></h3>
+			<%
+			}
+			%>
 			<table>
 				<tr>
 					<th>First Name</th>
@@ -47,5 +59,6 @@
 		</form>
 
 	</div>
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>
