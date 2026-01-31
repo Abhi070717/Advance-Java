@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import in.co.rays.bean.UserBean;
 import in.co.rays.model.UserModel;
 
-@WebServlet("/UserRegistrationctl") // wild Card mapping of webservlet
+@WebServlet("/UserRegistrationCtl") // wild Card mapping of webservlet	
 public class UserRegistrationCtl extends HttpServlet {
 
 	@Override

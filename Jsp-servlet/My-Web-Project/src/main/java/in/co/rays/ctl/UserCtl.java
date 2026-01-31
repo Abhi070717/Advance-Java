@@ -1,7 +1,6 @@
 package in.co.rays.ctl;
 
 import java.io.IOException;
-
 import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
@@ -12,73 +11,44 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import in.co.rays.bean.UserBean;
-
 import in.co.rays.model.UserModel;
 
-@WebServlet("/UserCtl.do")
+@WebServlet("/UserCtl")
 public class UserCtl extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		UserModel model = new UserModel();
+		response.sendRedirect("UserView.jsp");
 
-		String id = request.getParameter("id");
-
-		if (id != null) {
-			try {
-				UserBean bean = model.findByPk(Integer.parseInt(id));
-				request.setAttribute("bean", bean);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		RequestDispatcher rd = request.getRequestDispatcher("UserView.jsp");
-		rd.forward(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("int do post method");
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		UserModel model = new UserModel();
 		UserBean bean = new UserBean();
+		UserModel model = new UserModel();
 
-		String op = request.getParameter("operation");
-
-		String fname = request.getParameter("firstName");
-		String lname = request.getParameter("lastName");
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
 		String DOB = request.getParameter("DOB");
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 
 		try {
-			bean.setFirstName(fname);
-			bean.setLastName(lname);
+			bean.setFirstName(firstName);
+			bean.setLastName(lastName);
+			bean.setDob(sdf.parse(DOB));
 			bean.setLogin(login);
 			bean.setPassword(password);
-			bean.setDob(sdf.parse(DOB));
 
-			if (op.equals("update")) {
-				bean.setId(Integer.parseInt(request.getParameter("id")));
-				model.update(bean);
-				System.out.println("user added successfully");
-				request.setAttribute("successMsg", "user updated successfully");
-			} else {
-				model.add(bean);
-				System.out.println("user added successfully");
-				request.setAttribute("successMsg", "user added successfully");
-			}
+			model.add(bean);
+			request.setAttribute("msg", "User Added Successful");
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
-
 		RequestDispatcher rd = request.getRequestDispatcher("UserView.jsp");
 		rd.forward(request, response);
-
 	}
-
 }

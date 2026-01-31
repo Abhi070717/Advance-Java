@@ -13,7 +13,7 @@
 	String msg = (String) request.getAttribute("msg");
 	%>
 
-		<form action="UserRegistrationctl" method="post">
+		<form action="UserRegistrationCtl" method="post">
 			<h1>User Detail Form</h1>
 			
 			<%

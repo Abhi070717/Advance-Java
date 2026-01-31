@@ -19,11 +19,13 @@ public class LoginCtl extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String op = request.getParameter("operation");
 
 		if (op != null) {
 			HttpSession session = request.getSession();
 			session.invalidate();
+			
 		}
 		response.sendRedirect("LoginView.jsp");
 	}

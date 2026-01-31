@@ -8,72 +8,51 @@
 </head>
 <body>
 	<%@ include file="Header.jsp"%>
-	<%
-	UserBean bean = (UserBean) request.getAttribute("bean");
-	%>
-	<%-- <jsp:useBean id="bean" class="in.co.rays.bean.UserBean" scope="request"></jsp:useBean> --%>
-	<div align="center">
+	<div align="Center">
 		<%
-		String smsg = (String) request.getAttribute("successMsg");
+		String msg = (String) request.getAttribute("msg");
 		%>
-		<%
-		if (bean != null) {
-		%>
-		<h1>Update User</h1>
-		<%
-		} else {
-		%>
-		<h1>Add User</h1>
-		<%
-		}
-		%>
-
-		<h2 style="color: green"><%=smsg != null ? smsg : ""%></h2>
-
-		<form action="UserCtl.do" method="post">
-
+		<form action="UserCtl" method="Post">
+			<h1>Add User</h1>
+			<%
+			if (msg != null) {
+			%>
+			<h2><%=msg%></h2>
+			<%
+			}
+			%>
 			<table>
-				<input type="hidden" name="id"
-					value="<%=bean != null ? bean.getId() : ""%>">
 				<tr>
 					<th>First Name</th>
-					<td><input type="text" name="firstName"
-						value="<%=bean != null ? bean.getFirstName() : ""%>"
-						placeholder="enter firstName"></td>
+					<td><input type="text" name="firstName" value=""
+						placeholder="Enter First Name"></td>
 				</tr>
 				<tr>
 					<th>Last Name</th>
-					<td><input type="text" name="lastName"
-						value="<%=bean != null ? bean.getLastName() : ""%>"
-						placeholder="enter lastName"></td>
+					<td><input type="text" name="lastName" value=""
+						placeholder="Enter Last Name"></td>
 				</tr>
 				<tr>
-					<th>DAte Of Birth</th>
-					<td><input type="date" name="dob"
-						value="<%=bean != null ? bean.getDob() : ""%>"></td>
+					<th>Date Of Birth</th>
+					<td><input type="date" name="DOB" value=""></td>
 				</tr>
 				<tr>
 					<th>Login</th>
-					<td><input type="email" name="login"
-						value="<%=bean != null ? bean.getLogin() : ""%>"
-						placeholder="enter your login"></td>
+					<td><input type="email" name="login" value=""
+						placeholder="Enter your Email"></td>
 				</tr>
 				<tr>
 					<th>Password</th>
-					<td><input type="password" name="password"
-						value="<%=bean != null ? bean.getPassword() : ""%>"
-						placeholder="enter your password"></td>
+					<td><input type="password" name="password" name="password"
+						placeholder="Enter Your Password"></td>
 				</tr>
 				<tr>
 					<th></th>
-					<td><input type="submit" name="operation"
-						value="<%=bean != null ? "update" : "save"%>"></td>
+					<td><input type="Submit" name="operation" value="Save"></td>
+					<td></td>
 				</tr>
-
 			</table>
-
 		</form>
-
 	</div>
 	<%@ include file="Footer.jsp"%>
 </body>

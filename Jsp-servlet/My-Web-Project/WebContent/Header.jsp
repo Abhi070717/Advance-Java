@@ -16,16 +16,16 @@
 	if (ub != null) {
 	%>
 	<h2><%="Hii, " + ub.getFirstName()%></h2>
-	<a href="LoginCtl?operation=logout">Logout</a> &nbsp
-	<a href="#">User List</a> &nbsp
-	<a href="#">Add User</a>
+	<a href="LoginCtl?operation=logout">Logout</a> |
+	<a href="UserListCtl">User List</a> &nbsp
+	<a href="UserCtl">Add User</a>
 	<%
 	} else {
 	%>
 	<h2>Hii, Guest</h2>
-	<a href="LoginCtl">Login</a> &nbsp
+	<a href="LoginCtl">Login</a> |
 	<a href="WelcomeCtl">Welcome</a> &nbsp
-	<a href="UserRegistrationctl">User Registration</a>
+	<a href="UserRegistrationCtl">User Registration</a> |
 	<%
  }
  %>
