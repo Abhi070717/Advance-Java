@@ -1,4 +1,4 @@
-package in.co.rays.ctl;
+  package in.co.rays.ctl;
 
 import java.io.IOException;
 import java.util.List;
@@ -35,13 +35,41 @@ public class UserListCtl extends HttpServlet {
 
 		RequestDispatcher rd = request.getRequestDispatcher("UserListView.jsp");
 		rd.forward(request, response);
-
-//		response.sendRedirect("UserListView.jsp");
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		UserBean bean = new UserBean();
+		UserModel model = new UserModel();
+
+		String op = request.getParameter("operation");
+		String[] ids = request.getParameterValues("ids");
+		if (op.equals("Delete")) {
+			if (ids != null && ids.length > 0) {
+				for (String id : ids) {
+					bean.setId(Integer.parseInt(id));
+					try {
+						model.delete(bean);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		List list;
+		try {
+
+			list = model.search(bean);
+			request.setAttribute("list", list);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		RequestDispatcher rd = request.getRequestDispatcher("UserListView.jsp");
+		rd.forward(request, response);
 	}
 
 }
