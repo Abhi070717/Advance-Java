@@ -7,6 +7,7 @@
 <title>Marksheet Create</title>
 </head>
 <body>
+<%@ include file="Header.jsp"%>
 	<div align="Center">
 		<form action="MarksheetDetailCtl" method="post">
 			<h1>Marksheet Detail</h1>
@@ -45,5 +46,6 @@
 		</form>
 
 	</div>
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>

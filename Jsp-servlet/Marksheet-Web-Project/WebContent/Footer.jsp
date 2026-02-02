@@ -18,8 +18,7 @@
 	<div id="Footer">
 		<Center>
 			<hr>
-			<h3>© 2026 Your School Name. All Rights Reserved.</h3>
-			<h3>Contact: support@school.edu | +1 234 567 890</h3>
+			<h3>© 2026 Your School Name. All Rights Reserved  Contact: support@school.edu | +1 234 567 890</h3>
 		</Center>
 
 	</div>

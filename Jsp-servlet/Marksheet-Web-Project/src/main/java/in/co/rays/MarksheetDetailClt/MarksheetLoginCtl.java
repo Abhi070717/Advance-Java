@@ -2,6 +2,7 @@ package in.co.rays.MarksheetDetailClt;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,33 +30,60 @@ public class MarksheetLoginCtl extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	        throws ServletException, IOException {
 
-		MarksheetBean bean = new MarksheetBean();
-		MarksheetModel model = new MarksheetModel();
+	    String name = request.getParameter("Name");
+	    String rollNoStr = request.getParameter("RollNo");
+	    String userCaptcha = request.getParameter("captchaInput");
 
-		String name = request.getParameter("Name");
-		String rollNo = request.getParameter("RollNo");
-		String userCaptcha = request.getParameter("captchaInput");
+	    HttpSession session = request.getSession(false);
+	    String sessionCaptcha = (session != null) 
+	            ? (String) session.getAttribute("captcha") 
+	            : null;
 
-		HttpSession session = request.getSession();
-		String sessionCaptcha = (String) session.getAttribute("captcha");
+	    if (sessionCaptcha == null || userCaptcha == null
+	            || !sessionCaptcha.equalsIgnoreCase(userCaptcha.trim())) {
 
-		if (sessionCaptcha == null || !sessionCaptcha.equalsIgnoreCase(userCaptcha)) {
+	        request.setAttribute("error", "Invalid CAPTCHA. Please try again.");
+	        RequestDispatcher rd = request.getRequestDispatcher("StudentLogin.jsp");
+	        rd.forward(request, response);
+	        return;
+	    }
 
-			request.setAttribute("error", "Invalid CAPTCHA. Please try again.");
-			request.getRequestDispatcher("StudentLogin.jsp").forward(request, response);
-			return;
-		}
+	    session.removeAttribute("captcha");
 
-		if ("John".equalsIgnoreCase(name) && "101".equals(rollNo)) {
+	    try {
 
-			request.getRequestDispatcher("Marksheet.jsp").forward(request, response);
+	        int rollNo = Integer.parseInt(rollNoStr);
 
-		} else {
+	        MarksheetModel model = new MarksheetModel();
+	        MarksheetBean bean = model.findByRollNo(rollNo);
 
-			request.setAttribute("error", "Invalid Name or Roll Number.");
-			request.getRequestDispatcher("StudentLogin.jsp").forward(request, response);
-		}
+	        if (bean != null && bean.getName().equalsIgnoreCase(name)) {
+
+	            request.setAttribute("bean", bean);
+	            RequestDispatcher rd = request.getRequestDispatcher("WelcomeView.jsp");
+	            rd.forward(request, response);
+
+	        } else {
+
+	            request.setAttribute("Error", "Invalid Name or Roll Number.");
+	            RequestDispatcher rd = request.getRequestDispatcher("StudentLogin.jsp");
+	            rd.forward(request, response);
+	        }
+
+	    } catch (NumberFormatException e) {
+
+	        request.setAttribute("Error", "Roll Number must be numeric.");
+	        RequestDispatcher rd = request.getRequestDispatcher("StudentLogin.jsp");
+	        rd.forward(request, response);
+
+	    } catch (Exception e) {
+
+	        e.printStackTrace();
+	        request.setAttribute("Error", "Server Error!");
+	        RequestDispatcher rd = request.getRequestDispatcher("StudentLogin.jsp");
+	        rd.forward(request, response);
+	    }
 	}
 }

@@ -8,8 +8,8 @@
 
 <script>
 function refreshCaptcha() {
-    document.getElementById("captchaImage").src =
-        "<%=request.getContextPath()%>
+	document.getElementById("captchaImage").src =
+		"<%=request.getContextPath()%>
 	/captcha.jsp?ts="
 				+ new Date().getTime();
 	}
@@ -17,48 +17,55 @@ function refreshCaptcha() {
 
 </head>
 <body>
-
 	<%@ include file="Header.jsp"%>
-
-	<div align="center">
+	<div class="center">
+		<h2>Student Login</h2>
+		<%
+		String error = (String) request.getAttribute("error");
+		if (error != null) {
+		%>
+		<p style="color: red;"><%=error%></p>
+		<%
+		}
+		%>
 		<form action="MarksheetLoginCtl" method="post">
-
-			<h1>Login Form</h1>
-
 			<table>
+
 				<tr>
-					<th>Name</th>
+					<td>Name:</td>
 					<td><input type="text" name="Name" placeholder="Enter Name"
 						required></td>
 				</tr>
 
 				<tr>
-					<th>Roll Number</th>
+					<td>Roll Number:</td>
 					<td><input type="text" name="RollNo"
 						placeholder="Enter Roll Number" required></td>
 				</tr>
 
 				<tr>
-					<th>Please Enter Captcha</th>
+					<td>CAPTCHA:</td>
 					<td><img
 						src="<%=request.getContextPath()%>/captcha.jsp?ts=<%=System.currentTimeMillis()%>"
 						id="captchaImage" alt="CAPTCHA Image">
+						<button type="button" onclick="refreshCaptcha()">Reload</button></td>
+				</tr>
 
-						<button type="button" onclick="refreshCaptcha()">Reload</button> <br>
-					<br> <input type="text" name="captchaInput"
+				<tr>
+					<td>Please Enter CAPTCHA:</td>
+					<td><input type="text" name="captchaInput"
 						placeholder="Enter CAPTCHA" required></td>
 				</tr>
 
 				<tr>
-					<th></th>
+					<td></td>
 					<td><input type="submit" value="Login"></td>
 				</tr>
+
 			</table>
-
 		</form>
+
 	</div>
-
 	<%@ include file="Footer.jsp"%>
-
 </body>
 </html>

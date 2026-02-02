@@ -15,19 +15,20 @@
 	if (mb != null) {
 	%>
 	<h2><%="Hii, " + mb.getName()%></h2>
-	<a href="MarksheetLoginCtl?operation=logout">Logout</a> &nbsp
-	<a href="#">Student List</a> &nbsp
+	<a href="MarksheetLoginCtl?operation=logout">Logout</a> |
+	<a href="#">Student List</a> |
 	<a href="#">Add Student Detail</a>
 	<%
 	} else {
 	%>
 	<h2>Hello, Student</h2>
-	<a href="MaeksheetLoginCtl">Login</a> |
+	<a href="MarksheetLoginCtl">Login</a> |
 	<a href="WelcomeCtl">Welcome</a> |
-	<a href="MaeksheetDetailCtl">User Registration</a> |
+	<a href="MarksheetDetailCtl">Student Registration</a> |
 	<%
  }
  %>
+ <hr>
 
 </body>
 </html>

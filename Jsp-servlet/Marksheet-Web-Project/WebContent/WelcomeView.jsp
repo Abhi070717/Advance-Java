@@ -4,14 +4,18 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Marksheet View</title>
+<title>Welcome</title>
 </head>
 <body>
+	<%@ include file="Header.jsp"%>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<div align="Center">
-		<a href="MarksheetLoginCtl" style="color: red">
-			<h1>Welcome to Marksheet Project</h1>
-		</a>
+		<h1>Welcome To Marksheet Web-Project</h1>
 	</div>
-
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>
