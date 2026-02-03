@@ -35,7 +35,6 @@ public class MarksheetModel {
 
 	// Add Query in student_Marksheet
 	public void add(MarksheetBean bean) throws Exception {
-		int pk = nextPk();
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -43,14 +42,16 @@ public class MarksheetModel {
 
 		System.out.println("Java is connected with MYSQL Successfully");
 
-		PreparedStatement pstmt = conn.prepareStatement("insert into Student_Marksheet values(?, ?, ?, ?, ?, ?)");
+		PreparedStatement pstmt = conn.prepareStatement("insert into Student_Marksheet values(?, ?, ?, ?, ?, ?, ?, ?)");
 
-		pstmt.setInt(1, pk);
+		pstmt.setInt(1, nextPk());
 		pstmt.setString(2, bean.getName());
-		pstmt.setInt(3, bean.getRollNo());
-		pstmt.setInt(4, bean.getPhysics());
-		pstmt.setInt(5, bean.getChemistry());
-		pstmt.setInt(6, bean.getMaths());
+		pstmt.setString(3, bean.getUserName());
+		pstmt.setDate(4, new java.sql.Date(bean.getDob().getTime()));
+		pstmt.setInt(5, bean.getRollNo());
+		pstmt.setInt(6, bean.getPhysics());
+		pstmt.setInt(7, bean.getChemistry());
+		pstmt.setInt(8, bean.getMaths());
 
 		int i = pstmt.executeUpdate();
 
@@ -71,14 +72,16 @@ public class MarksheetModel {
 		System.out.println("Java is connected with MYSQL Successfully");
 
 		PreparedStatement pstmt = conn.prepareStatement(
-				"update st_user set Name = ?, RollNo = ?, Physics = ?, Chemistry = ?, Maths = ? where id = ?");
+				"update st_user set Name = ?, UserName = ?, dob = ? RollNo = ?, Physics = ?, Chemistry = ?, Maths = ? where id = ?");
 
-		pstmt.setInt(6, bean.getId());
+		pstmt.setInt(8, bean.getId());
 		pstmt.setString(1, bean.getName());
-		pstmt.setInt(2, bean.getRollNo());
-		pstmt.setInt(3, bean.getPhysics());
-		pstmt.setInt(4, bean.getChemistry());
-		pstmt.setInt(5, bean.getMaths());
+		pstmt.setString(2, bean.getUserName());
+		pstmt.setDate(3, new java.sql.Date(bean.getDob().getTime()));
+		pstmt.setInt(4, bean.getRollNo());
+		pstmt.setInt(5, bean.getPhysics());
+		pstmt.setInt(6, bean.getChemistry());
+		pstmt.setInt(7, bean.getMaths());
 
 		int i = pstmt.executeUpdate();
 
@@ -129,10 +132,12 @@ public class MarksheetModel {
 			bean = new MarksheetBean();
 			bean.setId(rs.getInt(1));
 			bean.setName(rs.getString(2));
-			bean.setRollNo(rs.getInt(3));
-			bean.setPhysics(rs.getInt(4));
-			bean.setChemistry(rs.getInt(5));
-			bean.setMaths(rs.getInt(6));
+			bean.setUserName(rs.getString(3));
+			bean.setDob(rs.getDate(4));
+			bean.setRollNo(rs.getInt(5));
+			bean.setPhysics(rs.getInt(6));
+			bean.setChemistry(rs.getInt(7));
+			bean.setMaths(rs.getInt(8));
 
 		}
 
@@ -160,59 +165,64 @@ public class MarksheetModel {
 			bean = new MarksheetBean();
 			bean.setId(rs.getInt(1));
 			bean.setName(rs.getString(2));
-			bean.setRollNo(rs.getInt(3));
-			bean.setPhysics(rs.getInt(4));
-			bean.setChemistry(rs.getInt(5));
-			bean.setMaths(rs.getInt(6));
+			bean.setUserName(rs.getString(3));
+			bean.setDob(rs.getDate(4));
+			bean.setRollNo(rs.getInt(5));
+			bean.setPhysics(rs.getInt(6));
+			bean.setChemistry(rs.getInt(7));
+			bean.setMaths(rs.getInt(8));
 		}
 
 		pstmt.close();
 		conn.close();
 		return bean;
 	}
+
 	// Search Query Searching Marksheet Details
-		public List search(MarksheetBean bean) throws Exception {
+	public List search(MarksheetBean bean) throws Exception {
 
-			Class.forName("com.mysql.cj.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcproject", "root", "root");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcproject", "root", "root");
 
-			StringBuffer sql = new StringBuffer("select * from Student_Marksheet where 1=1");
+		StringBuffer sql = new StringBuffer("select * from Student_Marksheet where 1=1");
 
-			if (bean != null) {
-				if (bean.getName() != null && bean.getName().length() > 0) {
-					sql.append(" and Name like '" + bean.getName() + "%'");
-				}
-					if (bean.getRollNo() > 0) {
-						sql.append(" and RollNo like '" + bean.getRollNo() + "%'");
-					}
+		if (bean != null) {
+			if (bean.getName() != null && bean.getName().length() > 0) {
+				sql.append(" and Name like '" + bean.getName() + "%'");
 			}
-
-			System.out.println("sql Query===> " + sql.toString());
-			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
-
-			ResultSet rs = pstmt.executeQuery();
-
-			List list = new ArrayList();
-
-			while (rs.next()) {
-				bean = new MarksheetBean();
-				bean.setId(rs.getInt(1));
-				bean.setName(rs.getString(2));
-				bean.setRollNo(rs.getInt(3));
-				bean.setPhysics(rs.getInt(4));
-				bean.setChemistry(5);
-				bean.setMaths(rs.getInt(6));
-				list.add(bean);
+			if (bean.getRollNo() > 0) {
+				sql.append(" and RollNo like '" + bean.getRollNo() + "%'");
 			}
-
-			System.out.println("Query OK, The rows affected (0.02 sec)" + "\n"
-					+ "Records: Search  Duplicates: 0  Warnings: 0" + "\n" + "Record Displayed");
-
-			conn.close();
-			pstmt.close();
-			return list;
-
 		}
+
+		System.out.println("sql Query===> " + sql.toString());
+		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+
+		ResultSet rs = pstmt.executeQuery();
+
+		List list = new ArrayList();
+
+		while (rs.next()) {
+			bean = new MarksheetBean();
+			bean.setId(rs.getInt(1));
+			bean.setName(rs.getString(2));
+			bean.setUserName(rs.getString(3));
+			bean.setDob(rs.getDate(4));
+			bean.setRollNo(rs.getInt(5));
+			bean.setPhysics(rs.getInt(6));
+			bean.setChemistry(rs.getInt(7));
+			bean.setMaths(rs.getInt(8));
+			list.add(bean);
+		}
+
+		System.out.println("Query OK, The rows affected (0.02 sec)" + "\n"
+				+ "Records: Search  Duplicates: 0  Warnings: 0" + "\n" + "Record Displayed");
+
+		conn.close();
+		pstmt.close();
+		return list;
+
+	}
 
 }

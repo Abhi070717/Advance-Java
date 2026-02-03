@@ -42,6 +42,7 @@ public class MarksheetDetailCtl extends HttpServlet {
 			bean.setMaths(Integer.parseInt(Maths));
 
 			model.add(bean);
+			request.setAttribute("msg", "Student Added Successful");
 			response.sendRedirect("MarksheetDetailsView.jsp");
 
 		} catch (Exception e) {

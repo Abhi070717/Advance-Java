@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName = "FrontCtl", urlPatterns = "*.do")		//*: Anything
+@WebFilter(filterName = "FrontCtl", urlPatterns = "*.do")		//*: Anything after login protect page
 public class FrontCtl implements Filter{
 	
 	@Override

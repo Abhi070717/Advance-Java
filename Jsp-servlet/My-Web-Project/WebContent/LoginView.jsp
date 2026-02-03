@@ -21,9 +21,7 @@
 			<%
 			if (msg != null) {
 			%>
-			<h3 style="color: red">
-				<%=msg%>
-			</h3>
+			<h3 style="color: red"><%=msg%></h3>
 			<%
 			}
 			%>
@@ -37,7 +35,6 @@
 			<%
 			}
 			%>
-
 			<table>
 				<tr>
 					<th>Login</th>
@@ -55,7 +52,6 @@
 					<td></td>
 				</tr>
 			</table>
-
 		</form>
 	</div>
 	<%@ include file="Footer.jsp"%>

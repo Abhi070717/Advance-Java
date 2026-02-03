@@ -30,60 +30,54 @@ public class MarksheetLoginCtl extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-	        throws ServletException, IOException {
+			throws ServletException, IOException {
 
-	    String name = request.getParameter("Name");
-	    String rollNoStr = request.getParameter("RollNo");
-	    String userCaptcha = request.getParameter("captchaInput");
+		MarksheetBean bean = new MarksheetBean();
+		MarksheetModel model = new MarksheetModel();
 
-	    HttpSession session = request.getSession(false);
-	    String sessionCaptcha = (session != null) 
-	            ? (String) session.getAttribute("captcha") 
-	            : null;
+		String name = request.getParameter("Name");
+		String rollNoStr = request.getParameter("RollNo");
+		String userCaptcha = request.getParameter("captchaInput");
 
-	    if (sessionCaptcha == null || userCaptcha == null
-	            || !sessionCaptcha.equalsIgnoreCase(userCaptcha.trim())) {
+		HttpSession session = request.getSession(false);
+		String sessionCaptcha = (session != null) ? (String) session.getAttribute("captcha") : null;
 
-	        request.setAttribute("error", "Invalid CAPTCHA. Please try again.");
-	        RequestDispatcher rd = request.getRequestDispatcher("StudentLogin.jsp");
-	        rd.forward(request, response);
-	        return;
-	    }
+		if (sessionCaptcha == null || userCaptcha == null || !sessionCaptcha.equalsIgnoreCase(userCaptcha.trim())) {
 
-	    session.removeAttribute("captcha");
+			request.setAttribute("error", "Invalid CAPTCHA. Please try again.");
+			RequestDispatcher rd = request.getRequestDispatcher("StudentLoginView.jsp");
+			rd.forward(request, response);
+			return;
+		}
 
-	    try {
+		session.removeAttribute("captcha");
 
-	        int rollNo = Integer.parseInt(rollNoStr);
+		try {
 
-	        MarksheetModel model = new MarksheetModel();
-	        MarksheetBean bean = model.findByRollNo(rollNo);
+			int rollNo = Integer.parseInt(rollNoStr);
 
-	        if (bean != null && bean.getName().equalsIgnoreCase(name)) {
+			bean = model.findByRollNo(rollNo);
 
-	            request.setAttribute("bean", bean);
-	            RequestDispatcher rd = request.getRequestDispatcher("WelcomeView.jsp");
-	            rd.forward(request, response);
+			if (bean != null && bean.getName().equalsIgnoreCase(name)) {
 
-	        } else {
+				session.setAttribute("user", bean);
+				response.sendRedirect("WelcomeCtl");
+			} else {
 
-	            request.setAttribute("Error", "Invalid Name or Roll Number.");
-	            RequestDispatcher rd = request.getRequestDispatcher("StudentLogin.jsp");
-	            rd.forward(request, response);
-	        }
+				request.setAttribute("Error", "Invalid Name or Roll Number.");
+				RequestDispatcher rd = request.getRequestDispatcher("StudentLoginView.jsp");
+				rd.forward(request, response);
+			}
 
-	    } catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 
-	        request.setAttribute("Error", "Roll Number must be numeric.");
-	        RequestDispatcher rd = request.getRequestDispatcher("StudentLogin.jsp");
-	        rd.forward(request, response);
+			request.setAttribute("Error", "Roll Number must be numeric.");
+			RequestDispatcher rd = request.getRequestDispatcher("StudentLoginView.jsp");
+			rd.forward(request, response);
 
-	    } catch (Exception e) {
+		} catch (Exception e) {
 
-	        e.printStackTrace();
-	        request.setAttribute("Error", "Server Error!");
-	        RequestDispatcher rd = request.getRequestDispatcher("StudentLogin.jsp");
-	        rd.forward(request, response);
-	    }
+			e.printStackTrace();
+		}
 	}
 }

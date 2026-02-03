@@ -9,15 +9,15 @@
 </head>
 <body>
 	<%
-	MarksheetBean mb = (MarksheetBean) session.getAttribute("student");
+	MarksheetBean mb = (MarksheetBean) session.getAttribute("user");
 	%>
 	<%
 	if (mb != null) {
 	%>
 	<h2><%="Hii, " + mb.getName()%></h2>
 	<a href="MarksheetLoginCtl?operation=logout">Logout</a> |
-	<a href="#">Student List</a> |
-	<a href="#">Add Student Detail</a>
+	<a href="MarksheetListCtl">Student List</a> |
+	<a href="MarksheetDetailCtl">Add Student Detail</a>
 	<%
 	} else {
 	%>
@@ -29,6 +29,5 @@
  }
  %>
  <hr>
-
 </body>
 </html>

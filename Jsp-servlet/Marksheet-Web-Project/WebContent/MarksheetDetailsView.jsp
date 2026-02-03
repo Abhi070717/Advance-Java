@@ -7,10 +7,20 @@
 <title>Marksheet Create</title>
 </head>
 <body>
-<%@ include file="Header.jsp"%>
+	<%@ include file="Header.jsp"%>
 	<div align="Center">
+		<%
+		String msg = (String) request.getAttribute("msg");
+		%>
 		<form action="MarksheetDetailCtl" method="post">
-			<h1>Marksheet Detail</h1>
+			<h1>Add Student Detail</h1>
+			<%
+			if (msg != null) {
+			%>
+			<h2><%=msg%></h2>
+			<%
+			}
+			%>
 			<table>
 				<tr>
 					<th>Name</th>
@@ -39,7 +49,7 @@
 				</tr>
 				<tr>
 					<th></th>
-					<td><input type="Submit" name="operation" value="Save"></td>
+					<td><input type="Submit" name="operation" value="Update"></td>
 					<td></td>
 				</tr>
 			</table>
