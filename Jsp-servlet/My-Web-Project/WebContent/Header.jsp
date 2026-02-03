@@ -17,8 +17,8 @@
 	%>
 	<h2><%="Hii, " + ub.getFirstName()%></h2>
 	<a href="LoginCtl?operation=logout">Logout</a> |
-	<a href="UserListCtl">User List</a> &nbsp
-	<a href="UserCtl">Add User</a>
+	<a href="UserListCtl.do">User List</a> &nbsp
+	<a href="UserCtl.do">Add User</a>
 	<%
 	} else {
 	%>

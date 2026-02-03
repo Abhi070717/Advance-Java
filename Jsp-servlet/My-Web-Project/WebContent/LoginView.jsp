@@ -9,13 +9,24 @@
 <body>
 	<%@ include file="Header.jsp"%>
 	<%
+	String msg = (String) request.getAttribute("msg");
+	%>
+	<%
 	String errormsg = (String) request.getAttribute("errormsg");
 	%>
 	<div align="Center">
 
 		<form action="LoginCtl" method="post">
 			<h1>Login Form</h1>
-
+			<%
+			if (msg != null) {
+			%>
+			<h3 style="color: red">
+				<%=msg%>
+			</h3>
+			<%
+			}
+			%>
 			<%
 			if (errormsg != null) {
 			%>
