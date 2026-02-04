@@ -9,13 +9,22 @@
 <title>User List</title>
 </head>
 <body>
-	<%@ include file="Header.jsp"%>
 	<%
 	List list = (List) request.getAttribute("list");
 	%>
+	<%@ include file="Header.jsp"%>
 	<div align="Center">
 		<form action="UserListCtl.do" method="Post">
 			<h1>User List</h1>
+
+			<table>
+				<tr>
+					<th>First Name</th>
+					<td><input type="text" name="firstName" value=""
+						placeholder="Search by First Name"> <input type="submit"
+						name="operation" value="Search"></td>
+				</tr>
+			</table>
 			<table width="100%" border="1px">
 				<tr>
 					<th>Select</th>
@@ -25,6 +34,7 @@
 					<th>Date of birth</th>
 					<th>Login</th>
 					<th>Password</th>
+					<th>Edit</th>
 				</tr>
 				<%
 				Iterator it = list.iterator();
@@ -41,15 +51,17 @@
 					<td><%=bean.getDob()%></td>
 					<td><%=bean.getLogin()%></td>
 					<td><%=bean.getPassword()%></td>
+					<td><a href="UserCtl.do?id=<%=bean.getId()%>">edit</a></td>
 				</tr>
 				<%
 				}
 				%>
-				<tr></tr>
 			</table>
 
 			<table>
-				<td><input type="Submit" name="operation" value="Delete"></td>
+				<tr>
+					<td><input type="Submit" name="operation" value="Delete"></td>
+				</tr>
 			</table>
 		</form>
 	</div>

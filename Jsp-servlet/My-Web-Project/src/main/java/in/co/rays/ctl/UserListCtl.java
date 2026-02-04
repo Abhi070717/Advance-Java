@@ -1,4 +1,4 @@
-  package in.co.rays.ctl;
+package in.co.rays.ctl;
 
 import java.io.IOException;
 import java.util.List;
@@ -41,9 +41,8 @@ public class UserListCtl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		UserBean bean = new UserBean();
 		UserModel model = new UserModel();
-
+		UserBean bean = new UserBean();
 		String op = request.getParameter("operation");
 		String[] ids = request.getParameterValues("ids");
 		if (op.equals("Delete")) {
@@ -57,6 +56,10 @@ public class UserListCtl extends HttpServlet {
 					}
 				}
 			}
+		}
+		if (op.equals("Search")) {
+			bean.setFirstName(request.getParameter("firstName"));
+//			bean.setLastName(request.getParameter("lastName"));
 		}
 		List list;
 		try {
