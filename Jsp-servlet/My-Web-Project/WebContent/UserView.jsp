@@ -16,7 +16,7 @@
 		String msg = (String) request.getAttribute("msg");
 		%>
 		<form action="UserCtl.do" method="Post">
-		<h1><%=bean != null && bean.getId() > 0 ? "Update User" : "Add User"%></h1>
+			<h1><%=bean != null && bean.getId() > 0 ? "Update User" : "Add User"%></h1>
 			<%-- <%
 			if (bean != null && bean.getId() > 0) {
 			%>
@@ -31,7 +31,10 @@
 			<%
 			if (msg != null) {
 			%>
-			<h2><%=msg%></h2>
+			<h2 style="color: green"><%=msg%></h2>
+			<%
+			} else {
+			%>
 			<%
 			}
 			%>

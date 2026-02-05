@@ -59,7 +59,7 @@ public class UserListCtl extends HttpServlet {
 		}
 		if (op.equals("Search")) {
 			bean.setFirstName(request.getParameter("firstName"));
-//			bean.setLastName(request.getParameter("lastName"));
+			bean.setLastName(request.getParameter("lastName"));
 		}
 		List list;
 		try {

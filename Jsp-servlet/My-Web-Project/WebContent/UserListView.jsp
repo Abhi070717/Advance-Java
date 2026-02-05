@@ -23,6 +23,10 @@
 					<td><input type="text" name="firstName" value=""
 						placeholder="Search by First Name"> <input type="submit"
 						name="operation" value="Search"></td>
+					<th>Last Name</th>
+					<td><input type="text" name="lastName" value=""
+						placeholder="Search by Last Name"> <input type="submit"
+						name="operation" value="Search"></td>
 				</tr>
 			</table>
 			<table width="100%" border="1px">
@@ -44,7 +48,7 @@
 				%>
 				<tr align="Center">
 					<td><input type="Checkbox" name="ids"
-						value="<%=bean.getId()%>">
+						value="<%=bean.getId()%>"></td>
 					<td><%=bean.getId()%></td>
 					<td><%=bean.getFirstName()%></td>
 					<td><%=bean.getLastName()%></td>

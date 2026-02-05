@@ -8,7 +8,6 @@
 <title>Header</title>
 </head>
 <body>
-
 	<%
 	UserBean ub = (UserBean) session.getAttribute("user");
 	%>
@@ -17,6 +16,7 @@
 	%>
 	<h2><%="Hii, " + ub.getFirstName()%></h2>
 	<a href="LoginCtl?operation=logout">Logout</a> |
+	<a href="WelcomeCtl">Welcome</a> |
 	<a href="UserListCtl.do">User List</a> &nbsp
 	<a href="UserCtl.do">Add User</a>
 	<%
@@ -24,8 +24,8 @@
 	%>
 	<h2>Hii, Guest</h2>
 	<a href="LoginCtl">Login</a> |
-	<a href="WelcomeCtl">Welcome</a> &nbsp
-	<a href="UserRegistrationCtl">User Registration</a> |
+	<a href="WelcomeCtl">Welcome</a> |
+	<a href="UserRegistrationCtl">User Registration</a>
 	<%
  }
  %>
