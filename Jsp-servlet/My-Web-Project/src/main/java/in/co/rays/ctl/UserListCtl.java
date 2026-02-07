@@ -46,7 +46,7 @@ public class UserListCtl extends HttpServlet {
 		String op = request.getParameter("operation");
 		String[] ids = request.getParameterValues("ids");
 		if (op.equals("Delete")) {
-			if (ids != null && ids.length > 0) {
+			if (ids != null) {
 				for (String id : ids) {
 					bean.setId(Integer.parseInt(id));
 					try {
