@@ -12,7 +12,18 @@
 		<welcome-file>default.jsp</welcome-file>
 		<welcome-file>default.htm</welcome-file>
 	</welcome-file-list>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/Error404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/Error500.jsp</location>
+	</error-page>
+	
 	<session-config>
-        <session-timeout>1</session-timeout>		<!-- 1 = 1 minuts -->
-    </session-config>
+		<session-timeout>1</session-timeout>		<!-- 1 = 1 minuts -->
+	</session-config>
 </web-app>

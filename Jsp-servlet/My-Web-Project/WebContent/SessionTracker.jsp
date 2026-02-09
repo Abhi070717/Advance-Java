@@ -19,11 +19,11 @@
 	</h3>
 	<h3>
 		<a href="WelcomeView.jsp?jsessionid=<%=session.getId()%>">Session
-			id Link </a>		//http://localhost:8080/My-Web-Project/WelcomeView.jsp?jsessionid=C71631F7815FA12972E5603971F39CF2
+			Id Link </a>
 	</h3>
 	<form action="track" method="post">
-		<input type="text" name="jsessionid" value="<%=session.getId()%>">
-		<input type="Submit" value="<====">
+		<input type="Hidden" name="jsessionid" value="<%=session.getId()%>">
+		<input type="Submit" value="Click">
 	</form>
 </body>
 </html>

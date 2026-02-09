@@ -9,19 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/FirstSession")
-public class FirstSession extends HttpServlet {
-
+@WebServlet("/SecondSession")
+public class SecondSession extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
 
-		if (session != null) {
-			System.out.println("First Session = " + session.getId());
-		} else {
-			System.out.println("Session is null");
-		}
+		HttpSession session = request.getSession(true); // or use true in bracked HttpSession session = Request.getSession();
+		System.out.println("Second Session = " + session.getId());
+
 	}
-
 }
