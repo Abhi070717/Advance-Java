@@ -4,50 +4,49 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Student Form</title>
+<title>Insert title here</title>
 </head>
 <body>
-
 	<div align="center">
+		<h1>User Form</h1>
 
-		<form action="HelloServlet" method="post">
-			<h1>Student Detail Form</h1>
+		<form action="GetUserFrom.jsp">
+
 			<table>
-				<tr>
-					<th>First Name</th>
-					<td><input type="text" name="firstName" value=""
-						placeholder="Enter First Name"></td>
-				</tr>
-				<tr>
-					<th>Last Name</th>
-					<td><input type="text" name="lastName" value=""
-						placeholder="Enter Last Name"></td>
-				</tr>
 
 				<tr>
-					<th>Date Of Birth</th>
-					<td><input type="date" name="DOB" value=""></td>
+					<th>First Name:</th>
+					<td><input type="text" name="firstName" value=""
+						placeholder="enter firstName"></td>
 				</tr>
 				<tr>
-					<th>Login</th>
+					<th>Last Name:</th>
+					<td><input type="text" name="lastName" value=""
+						placeholder="enter lastName"></td>
+				</tr>
+				<tr>
+					<th>Login:</th>
 					<td><input type="email" name="login" value=""
-						placeholder="Enter your Email"></td>
+						placeholder="enter your login"></td>
 				</tr>
 				<tr>
-					<th>Password</th>
-					<td><input type="password" name="password" name="password"
-						placeholder="Enter Your Password"></td>
+					<th>Password:</th>
+					<td><input type="password" name="password" value=""
+						placeholder="enter your password"></td>
+				</tr>
+				<tr>
+					<th>Dob:</th>
+					<td><input type="date" name="dob" value=""></td>
 				</tr>
 				<tr>
 					<th></th>
-					<td><input type="Submit" name="operation" value="Save"></td>
-					<td></td>
+					<td><input type="submit" name="operation" value="save"></td>
 				</tr>
+
 			</table>
 
 		</form>
 
 	</div>
-
 </body>
 </html>
