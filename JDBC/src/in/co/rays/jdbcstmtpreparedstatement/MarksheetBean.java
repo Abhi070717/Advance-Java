@@ -8,6 +8,7 @@ public class MarksheetBean {
 	private int Physics;
 	private int Chemistry;
 	private int Maths;
+	// public static final String Student_Report = 33; 
 	
 	public int getId() {
 		return id;
